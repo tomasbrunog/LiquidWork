@@ -3,7 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidWork.WebUI", "LiquidWork.WebUI\LiquidWork.WebUI.csproj", "{3DC02714-0F3D-4256-9884-50B270AFD9EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidWork.Persistence", "LiquidWork.Persistence\LiquidWork.Persistence.csproj", "{3BFCB34C-25F4-4F0B-B833-F03D6F2235BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidWork.Core", "LiquidWork.Core\LiquidWork.Core.csproj", "{B6F3893F-7E03-4651-BAFA-1817D143ABB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiquidWork.Services", "LiquidWork.Services\LiquidWork.Services.csproj", "{B43FD9CA-984A-41AC-9515-5BDEF3EBD5AB}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DC02714-0F3D-4256-9884-50B270AFD9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DC02714-0F3D-4256-9884-50B270AFD9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DC02714-0F3D-4256-9884-50B270AFD9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DC02714-0F3D-4256-9884-50B270AFD9EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFCB34C-25F4-4F0B-B833-F03D6F2235BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFCB34C-25F4-4F0B-B833-F03D6F2235BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFCB34C-25F4-4F0B-B833-F03D6F2235BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFCB34C-25F4-4F0B-B833-F03D6F2235BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F3893F-7E03-4651-BAFA-1817D143ABB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F3893F-7E03-4651-BAFA-1817D143ABB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F3893F-7E03-4651-BAFA-1817D143ABB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F3893F-7E03-4651-BAFA-1817D143ABB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B43FD9CA-984A-41AC-9515-5BDEF3EBD5AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43FD9CA-984A-41AC-9515-5BDEF3EBD5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43FD9CA-984A-41AC-9515-5BDEF3EBD5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43FD9CA-984A-41AC-9515-5BDEF3EBD5AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
