@@ -11,6 +11,17 @@ namespace LiquidWork.WebUI.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("DefaultConnection");
+        //    }
+        //}
+
+
+
+
         }
     }
 }

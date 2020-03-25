@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidWork.Core\LiquidWork.Core.csproj" />
+  </ItemGroup>
+
 </Project>
