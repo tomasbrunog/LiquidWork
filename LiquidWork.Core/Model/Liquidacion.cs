@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace LiquidWork.Core.Model
@@ -7,13 +9,18 @@ namespace LiquidWork.Core.Model
     public class Liquidacion
     {
         public int LiquidacionId { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Periodo { get; set; }
-        public double TotalRemunerativo { get; set; }
-        public double TotalNoRemunerativo { get; set; }
-        public double TotalDeducciones { get; set; }
-        public double Neto { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal TotalRemunerativo { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal TotalNoRemunerativo { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal TotalDeducciones { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal Neto { get; set; }
 
-        public int LegajoId { get; set; }
+        public int? LegajoId { get; set; }
         public Legajo Legajo { get; set; }
         public IEnumerable<Concepto> Conceptos { get; set; }
 
