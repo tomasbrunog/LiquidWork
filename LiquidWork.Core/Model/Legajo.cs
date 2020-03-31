@@ -19,7 +19,7 @@ namespace LiquidWork.Core.Model
         public string Apellido { get; set; }
         [Range(0, 99999999999)]
         [Required]
-        public int CUIL { get; set; }
+        public long CUIL { get; set; }
         [MaxLength(50)]
         public string Categoria { get; set; }
         [DataType(DataType.Date)]

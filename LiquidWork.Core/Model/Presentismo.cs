@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace LiquidWork.Core.Model
 {
-    public class SueldoBasico : Concepto
+    class Presentismo : Concepto
     {
         public override double CalcularMonto()
         {
