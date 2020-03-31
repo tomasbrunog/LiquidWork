@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LiquidWork.Core.Model.Liquidacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Periodo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalRemunerativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNoRemunerativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDeducciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Neto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Legajo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Periodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalRemunerativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNoRemunerativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalDeducciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Neto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Legajo.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LiquidacionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LiquidacionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LiquidacionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
