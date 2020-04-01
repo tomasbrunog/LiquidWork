@@ -47,6 +47,8 @@
     <Compile Remove="Migrations\20200330230427_InitialMigration.Designer.cs" />
     <Compile Remove="Migrations\20200331040320_InitialMigration.cs" />
     <Compile Remove="Migrations\20200331040320_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200331211553_AddRemainingConceptoSubclasses.cs" />
+    <Compile Remove="Migrations\20200331211553_AddRemainingConceptoSubclasses.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

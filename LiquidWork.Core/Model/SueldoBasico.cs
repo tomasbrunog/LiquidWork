@@ -7,7 +7,9 @@ namespace LiquidWork.Core.Model
 {
     public class SueldoBasico : Concepto
     {
-        public override double CalcularMonto()
+        public new int CodigoConcepto { get; } = 101;
+
+        public override decimal CalcularMonto()
         {
             throw new NotImplementedException();
         }

@@ -4,9 +4,11 @@ using System.Text;
 
 namespace LiquidWork.Core.Model
 {
-    class Feriado : Concepto
+    public class Feriado : Concepto
     {
-        public override double CalcularMonto()
+        public new int CodigoConcepto { get; } = 104;
+
+        public override decimal CalcularMonto()
         {
             throw new NotImplementedException();
         }

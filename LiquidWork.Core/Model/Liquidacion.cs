@@ -22,7 +22,7 @@ namespace LiquidWork.Core.Model
 
         public int? LegajoId { get; set; }
         public Legajo Legajo { get; set; }
-        public IEnumerable<Concepto> Conceptos { get; set; }
+        public IEnumerable<ItemConcepto> Conceptos { get; set; }
 
     }
 }

@@ -4,9 +4,10 @@ using System.Text;
 
 namespace LiquidWork.Core.Model
 {
-    class Pami : Concepto
+    public class Pami : Concepto
     {
-        public override double CalcularMonto()
+        public new int CodigoConcepto { get; } = 202;
+        public override decimal CalcularMonto()
         {
             throw new NotImplementedException();
         }

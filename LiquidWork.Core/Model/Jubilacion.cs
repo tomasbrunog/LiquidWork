@@ -4,9 +4,10 @@ using System.Text;
 
 namespace LiquidWork.Core.Model
 {
-    class Jubilacion : Concepto
+    public class Jubilacion : Concepto
     {
-        public override double CalcularMonto()
+        public new int CodigoConcepto { get; } = 201;
+        public override decimal CalcularMonto()
         {
             throw new NotImplementedException();
         }
