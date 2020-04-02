@@ -26,13 +26,6 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CodigoConcepto")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("LegajoId")
                         .HasColumnType("int");
 
@@ -40,7 +33,10 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Monto")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("NombreConcepto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Precedencia")
                         .HasColumnType("int");
@@ -58,8 +54,6 @@ namespace LiquidWork.Persistence.Migrations
                     b.HasIndex("LiquidacionId");
 
                     b.ToTable("Conceptos");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Concepto");
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Legajo", b =>
@@ -82,7 +76,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("FechaIngreso")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -108,95 +102,25 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Neto")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Periodo")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalDeducciones")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalNoRemunerativo")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalRemunerativo")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("LiquidacionId");
 
                     b.HasIndex("LegajoId");
 
                     b.ToTable("Liquidaciones");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.Antiguedad", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("Antiguedad");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.FaltasInjustificadas", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("FaltasInjustificadas");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.Feriado", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("Feriado");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.HorasExtra", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("HorasExtra");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.Jubilacion", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("Jubilacion");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.ObraSocial", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("ObraSocial");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.Pami", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("Pami");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.Presentismo", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("Presentismo");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.Sindicato", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("Sindicato");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.SueldoBasico", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("SueldoBasico");
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Concepto", b =>

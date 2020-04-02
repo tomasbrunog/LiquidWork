@@ -20,9 +20,8 @@ namespace LiquidWork.Core.Model
         [DataType(DataType.Currency)]
         public decimal Neto { get; set; }
 
-        public int? LegajoId { get; set; }
         public Legajo Legajo { get; set; }
-        public IEnumerable<ItemConcepto> Conceptos { get; set; }
+        public IEnumerable<Concepto> Conceptos { get; set; }
 
     }
 }

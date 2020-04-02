@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200331040642_InitialMigration")]
+    [Migration("20200402022443_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,13 +28,6 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CodigoConcepto")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("LegajoId")
                         .HasColumnType("int");
 
@@ -42,7 +35,10 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Monto")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("NombreConcepto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Precedencia")
                         .HasColumnType("int");
@@ -60,8 +56,6 @@ namespace LiquidWork.Persistence.Migrations
                     b.HasIndex("LiquidacionId");
 
                     b.ToTable("Conceptos");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Concepto");
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Legajo", b =>
@@ -76,15 +70,15 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("CUIL")
-                        .HasColumnType("int");
+                    b.Property<long>("CUIL")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Categoria")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("FechaIngreso")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -110,32 +104,25 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Neto")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Periodo")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalDeducciones")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalNoRemunerativo")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalRemunerativo")
-                        .HasColumnType("decimal (9,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("LiquidacionId");
 
                     b.HasIndex("LegajoId");
 
                     b.ToTable("Liquidaciones");
-                });
-
-            modelBuilder.Entity("LiquidWork.Core.Model.SueldoFijo", b =>
-                {
-                    b.HasBaseType("LiquidWork.Core.Model.Concepto");
-
-                    b.HasDiscriminator().HasValue("SueldoFijo");
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Concepto", b =>

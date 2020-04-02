@@ -26,7 +26,7 @@ namespace LiquidWork.Core.Model
         [Required]
         public DateTime FechaIngreso { get; set; }
 
-        public IEnumerable<ItemConcepto> ConceptosFijos { get; set; }
+        public IEnumerable<Concepto> ConceptosFijos { get; set; }
         public IEnumerable<Liquidacion> Liquidaciones { get; set; }
 
     }

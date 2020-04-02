@@ -16,9 +16,9 @@ namespace LiquidWork.Persistence.Migrations
                     NumeroLegajo = table.Column<int>(nullable: false),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false),
                     Apellido = table.Column<string>(maxLength: 50, nullable: false),
-                    CUIL = table.Column<int>(nullable: false),
+                    CUIL = table.Column<long>(nullable: false),
                     Categoria = table.Column<string>(maxLength: 50, nullable: true),
-                    FechaIngreso = table.Column<DateTime>(nullable: false)
+                    FechaIngreso = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,10 +32,10 @@ namespace LiquidWork.Persistence.Migrations
                     LiquidacionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Periodo = table.Column<DateTime>(nullable: false),
-                    TotalRemunerativo = table.Column<decimal>(type: "decimal (9,2)", nullable: false),
-                    TotalNoRemunerativo = table.Column<decimal>(type: "decimal (9,2)", nullable: false),
-                    TotalDeducciones = table.Column<decimal>(type: "decimal (9,2)", nullable: false),
-                    Neto = table.Column<decimal>(type: "decimal (9,2)", nullable: false),
+                    TotalRemunerativo = table.Column<decimal>(nullable: false),
+                    TotalNoRemunerativo = table.Column<decimal>(nullable: false),
+                    TotalDeducciones = table.Column<decimal>(nullable: false),
+                    Neto = table.Column<decimal>(nullable: false),
                     LegajoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -55,14 +55,13 @@ namespace LiquidWork.Persistence.Migrations
                 {
                     ConceptoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CodigoConcepto = table.Column<int>(nullable: false),
+                    NombreConcepto = table.Column<string>(nullable: true),
+                    Monto = table.Column<decimal>(nullable: false),
                     Unidad = table.Column<double>(nullable: false),
                     Precedencia = table.Column<int>(nullable: false),
-                    Monto = table.Column<decimal>(type: "decimal (9,2)", nullable: false),
-                    LiquidacionId = table.Column<int>(nullable: true),
-                    LegajoId = table.Column<int>(nullable: true),
                     TipoConcepto = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false)
+                    LiquidacionId = table.Column<int>(nullable: true),
+                    LegajoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

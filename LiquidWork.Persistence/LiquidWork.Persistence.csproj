@@ -5,50 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200326002534_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326002534_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326012354_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326012354_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326013420_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326013420_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326014232_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326014232_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326014354_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326014354_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326015124_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326015124_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326034355_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326034355_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326034702_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326034702_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326035106_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326035106_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326035330_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326035330_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326035521_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326035521_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326035757_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326035757_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326040220_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326040220_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200326040349_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200326040349_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200330205032_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200330205032_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200330222032_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200330222032_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200330222420_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200330222420_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200330222805_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200330222805_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200330223305_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200330223305_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200330230427_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200330230427_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200331040320_InitialMigration.cs" />
-    <Compile Remove="Migrations\20200331040320_InitialMigration.Designer.cs" />
-    <Compile Remove="Migrations\20200331211553_AddRemainingConceptoSubclasses.cs" />
-    <Compile Remove="Migrations\20200331211553_AddRemainingConceptoSubclasses.Designer.cs" />
+    <Compile Remove="Migrations\20200402020007_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200402020007_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200402021914_Change concepto navigation property legajo to required.cs" />
+    <Compile Remove="Migrations\20200402021914_Change concepto navigation property legajo to required.Designer.cs" />
+    <Compile Remove="Migrations\20200402022158_Change concepto navigation property legajo to required.cs" />
+    <Compile Remove="Migrations\20200402022158_Change concepto navigation property legajo to required.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
