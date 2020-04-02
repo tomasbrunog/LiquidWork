@@ -13,7 +13,7 @@ namespace LiquidWork.Core.Model
         [DataType(DataType.Currency)]
         public decimal Monto { get; set; }
         [Range(0, 999)]
-        public double Unidad { get; set; }
+        public double Cantidad { get; set; }
         [Range(0, 99)]
         public int Precedencia { get; set; } 
 
