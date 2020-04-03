@@ -11,9 +11,8 @@ namespace LiquidWork.Persistence.Migrations
                 name: "Legajos",
                 columns: table => new
                 {
-                    LegajoId = table.Column<int>(nullable: false)
+                    NumeroLegajo = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumeroLegajo = table.Column<int>(nullable: false),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false),
                     Apellido = table.Column<string>(maxLength: 50, nullable: false),
                     CUIL = table.Column<long>(nullable: false),
@@ -22,7 +21,7 @@ namespace LiquidWork.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Legajos", x => x.LegajoId);
+                    table.PrimaryKey("PK_Legajos", x => x.NumeroLegajo);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,16 +35,16 @@ namespace LiquidWork.Persistence.Migrations
                     TotalNoRemunerativo = table.Column<decimal>(nullable: false),
                     TotalDeducciones = table.Column<decimal>(nullable: false),
                     Neto = table.Column<decimal>(nullable: false),
-                    LegajoId = table.Column<int>(nullable: true)
+                    LegajoNumeroLegajo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Liquidaciones", x => x.LiquidacionId);
                     table.ForeignKey(
-                        name: "FK_Liquidaciones_Legajos_LegajoId",
-                        column: x => x.LegajoId,
+                        name: "FK_Liquidaciones_Legajos_LegajoNumeroLegajo",
+                        column: x => x.LegajoNumeroLegajo,
                         principalTable: "Legajos",
-                        principalColumn: "LegajoId",
+                        principalColumn: "NumeroLegajo",
                         onDelete: ReferentialAction.SetNull);
                 });
 
@@ -57,20 +56,20 @@ namespace LiquidWork.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreConcepto = table.Column<string>(nullable: true),
                     Monto = table.Column<decimal>(nullable: false),
-                    Unidad = table.Column<double>(nullable: false),
+                    Cantidad = table.Column<double>(nullable: false),
                     Precedencia = table.Column<int>(nullable: false),
                     TipoConcepto = table.Column<int>(nullable: false),
                     LiquidacionId = table.Column<int>(nullable: true),
-                    LegajoId = table.Column<int>(nullable: true)
+                    LegajoNumeroLegajo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Conceptos", x => x.ConceptoId);
                     table.ForeignKey(
-                        name: "FK_Conceptos_Legajos_LegajoId",
-                        column: x => x.LegajoId,
+                        name: "FK_Conceptos_Legajos_LegajoNumeroLegajo",
+                        column: x => x.LegajoNumeroLegajo,
                         principalTable: "Legajos",
-                        principalColumn: "LegajoId",
+                        principalColumn: "NumeroLegajo",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Conceptos_Liquidaciones_LiquidacionId",
@@ -81,9 +80,9 @@ namespace LiquidWork.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Conceptos_LegajoId",
+                name: "IX_Conceptos_LegajoNumeroLegajo",
                 table: "Conceptos",
-                column: "LegajoId");
+                column: "LegajoNumeroLegajo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Conceptos_LiquidacionId",
@@ -91,9 +90,9 @@ namespace LiquidWork.Persistence.Migrations
                 column: "LiquidacionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Liquidaciones_LegajoId",
+                name: "IX_Liquidaciones_LegajoNumeroLegajo",
                 table: "Liquidaciones",
-                column: "LegajoId");
+                column: "LegajoNumeroLegajo");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

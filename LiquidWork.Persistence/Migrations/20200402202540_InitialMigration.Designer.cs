@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200402022443_InitialMigration")]
+    [Migration("20200402202540_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,10 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LegajoId")
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("LegajoNumeroLegajo")
                         .HasColumnType("int");
 
                     b.Property<int?>("LiquidacionId")
@@ -46,12 +49,9 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<int>("TipoConcepto")
                         .HasColumnType("int");
 
-                    b.Property<double>("Unidad")
-                        .HasColumnType("float");
-
                     b.HasKey("ConceptoId");
 
-                    b.HasIndex("LegajoId");
+                    b.HasIndex("LegajoNumeroLegajo");
 
                     b.HasIndex("LiquidacionId");
 
@@ -60,7 +60,7 @@ namespace LiquidWork.Persistence.Migrations
 
             modelBuilder.Entity("LiquidWork.Core.Model.Legajo", b =>
                 {
-                    b.Property<int>("LegajoId")
+                    b.Property<int>("NumeroLegajo")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -85,10 +85,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("NumeroLegajo")
-                        .HasColumnType("int");
-
-                    b.HasKey("LegajoId");
+                    b.HasKey("NumeroLegajo");
 
                     b.ToTable("Legajos");
                 });
@@ -100,7 +97,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LegajoId")
+                    b.Property<int?>("LegajoNumeroLegajo")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Neto")
@@ -120,7 +117,7 @@ namespace LiquidWork.Persistence.Migrations
 
                     b.HasKey("LiquidacionId");
 
-                    b.HasIndex("LegajoId");
+                    b.HasIndex("LegajoNumeroLegajo");
 
                     b.ToTable("Liquidaciones");
                 });
@@ -129,7 +126,7 @@ namespace LiquidWork.Persistence.Migrations
                 {
                     b.HasOne("LiquidWork.Core.Model.Legajo", "Legajo")
                         .WithMany("ConceptosFijos")
-                        .HasForeignKey("LegajoId")
+                        .HasForeignKey("LegajoNumeroLegajo")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LiquidWork.Core.Model.Liquidacion", "Liquidacion")
@@ -142,7 +139,7 @@ namespace LiquidWork.Persistence.Migrations
                 {
                     b.HasOne("LiquidWork.Core.Model.Legajo", "Legajo")
                         .WithMany("Liquidaciones")
-                        .HasForeignKey("LegajoId")
+                        .HasForeignKey("LegajoNumeroLegajo")
                         .OnDelete(DeleteBehavior.SetNull);
                 });
 #pragma warning restore 612, 618

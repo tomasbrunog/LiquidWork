@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20200402021914_Change concepto navigation property legajo to required.Designer.cs" />
     <Compile Remove="Migrations\20200402022158_Change concepto navigation property legajo to required.cs" />
     <Compile Remove="Migrations\20200402022158_Change concepto navigation property legajo to required.Designer.cs" />
+    <Compile Remove="Migrations\20200402022443_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200402022443_InitialMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

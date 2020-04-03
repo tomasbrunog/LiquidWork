@@ -7,9 +7,6 @@ namespace LiquidWork.Core.Model
 {
     public class Legajo
     {
-        public int LegajoId { get; set; }
-        [Range(0,999999)]
-        [Required]
         public int NumeroLegajo { get; set; }
         [MaxLength(50)]
         [Required]

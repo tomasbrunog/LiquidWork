@@ -21,6 +21,7 @@ namespace LiquidWork.Persistence
                 etb.HasMany(l => l.ConceptosFijos).WithOne(c => c.Legajo).OnDelete(DeleteBehavior.Cascade);
                 etb.HasMany(l => l.Liquidaciones).WithOne(li => li.Legajo).OnDelete(DeleteBehavior.SetNull);
 
+                etb.HasKey(l => l.NumeroLegajo);
                 etb.Property(l => l.FechaIngreso).HasColumnType("date");
 
             });
@@ -38,13 +39,17 @@ namespace LiquidWork.Persistence
             //    etb.Property(li => li.Neto).HasColumnType("money");
             //});
 
+            //Data seeding
+            builder.Seed();
+
             base.OnModelCreating(builder);
         }
 
-
+        
+        }
 
 
     }
 
-}
+
 
