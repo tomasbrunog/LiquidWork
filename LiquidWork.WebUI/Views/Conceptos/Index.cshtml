@@ -1,0 +1,57 @@
+﻿@model IEnumerable<LiquidWork.Core.Model.Concepto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreConcepto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precedencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoConcepto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreConcepto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precedencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoConcepto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ConceptoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

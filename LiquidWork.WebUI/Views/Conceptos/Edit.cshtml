@@ -1,0 +1,54 @@
+﻿@model LiquidWork.Core.Model.Concepto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Concepto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ConceptoId" />
+            <div class="form-group">
+                <label asp-for="NombreConcepto" class="control-label"></label>
+                <input asp-for="NombreConcepto" class="form-control" />
+                <span asp-validation-for="NombreConcepto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monto" class="control-label"></label>
+                <input asp-for="Monto" class="form-control" />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precedencia" class="control-label"></label>
+                <input asp-for="Precedencia" class="form-control" />
+                <span asp-validation-for="Precedencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoConcepto" class="control-label"></label>
+                <select asp-for="TipoConcepto" class="form-control"></select>
+                <span asp-validation-for="TipoConcepto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

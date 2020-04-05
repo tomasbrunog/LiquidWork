@@ -48,7 +48,7 @@
 </div>
 <h4>Conceptos fijos</h4>
 <hr />
-<a asp-controller="Conceptos" asp-action="Create" asp-route-id="@Model.NumeroLegajo">Agregar concepto fijo</a>
+<a asp-controller="Conceptos" asp-action="Create" asp-route-numerolegajo="@Model.NumeroLegajo" >Agregar concepto fijo</a>
 <hr />
 <table class="table">
     <thead>
@@ -116,7 +116,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.ConceptosFijos != null)
+        @if (Model.Liquidaciones != null)
         {
             foreach (var item in Model.Liquidaciones)
             {
