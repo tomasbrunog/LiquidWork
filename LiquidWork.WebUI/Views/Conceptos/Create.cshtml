@@ -14,8 +14,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label for="NumeroLegajo" class="control-label">Numero de legajo</label>
-                <input name="NumeroLegajo" value=@TempData["NumeroLegajo"] class="form-control" readonly />
+                <label for="numeroLegajo" class="control-label">Numero de legajo</label>
+                <input name="numeroLegajo" value=@TempData["numeroLegajo"] class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label for="liquidacionId" class="control-label">Liquidacion nº</label>
+                <input name="liquidacionId" value=@TempData["liquidacionId"] class="form-control" readonly />
             </div>
             <div class="form-group">
                 <label asp-for="NombreConcepto" class="control-label"></label>

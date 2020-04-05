@@ -42,9 +42,10 @@ namespace LiquidWork.WebUI.Controllers
         }
 
         // GET: Conceptos/Create
-        public IActionResult Create(int? numeroLegajo)
+        public IActionResult Create(int? numeroLegajo, int? liquidacionId)
         {
-            TempData["NumeroLegajo"] = numeroLegajo;
+            TempData["numeroLegajo"] = numeroLegajo;
+            TempData["liquidacionId"] = numeroLegajo;
             return View();
         }
 
@@ -53,12 +54,21 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumeroLegajo,ConceptoId,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto, int? numeroLegajo)
+        public async Task<IActionResult> Create([Bind("NumeroLegajo,ConceptoId,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto, int? numeroLegajo, int? liquidacionId)
         {
             if (ModelState.IsValid)
             {
-                concepto.Legajo = _context.Legajos
-                    .FirstOrDefault(l => l.NumeroLegajo == numeroLegajo);
+
+                if (numeroLegajo != null)
+                {
+                    concepto.Legajo = _context.Legajos
+                .FirstOrDefault(l => l.NumeroLegajo == numeroLegajo); 
+                }
+                if (liquidacionId != null)
+                {
+                    concepto.Liquidacion = _context.Liquidaciones
+                .FirstOrDefault(l => l.LiquidacionId == liquidacionId); 
+                }
                 _context.Add(concepto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
