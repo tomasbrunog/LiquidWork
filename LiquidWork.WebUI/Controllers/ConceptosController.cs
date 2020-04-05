@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LiquidWork.Core.Model;
+using LiquidWork.Persistence;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using LiquidWork.Core.Model;
-using LiquidWork.Persistence;
 
 namespace LiquidWork.WebUI.Controllers
 {
-    public class LegajosController : Controller
+    public class ConceptosController : Controller
     {
         private readonly DataContext _context;
 
-        public LegajosController(DataContext context)
+        public ConceptosController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Legajos
+        // GET: Conceptos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Legajos.ToListAsync());
+            return View(await _context.Conceptos.ToListAsync());
         }
 
-        // GET: Legajos/Details/5
+        // GET: Conceptos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,40 +30,43 @@ namespace LiquidWork.WebUI.Controllers
                 return NotFound();
             }
 
-            var legajo = await _context.Legajos
-                .Include(l=>l.ConceptosFijos)
-                .FirstOrDefaultAsync(m => m.NumeroLegajo == id);
-            if (legajo == null)
+            var concepto = await _context.Conceptos
+                .Include(c=>c.Legajo)
+                .FirstOrDefaultAsync(m => m.ConceptoId == id);
+            if (concepto == null)
             {
                 return NotFound();
             }
 
-            return View(legajo);
+            return View(concepto);
         }
 
-        // GET: Legajos/Create
-        public IActionResult Create()
+        // GET: Conceptos/Create
+        public IActionResult Create(int? numeroLegajo)
         {
+            TempData["NumeroLegajo"] = numeroLegajo;
             return View();
         }
 
-        // POST: Legajos/Create
+        // POST: Conceptos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LegajoId,NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
+        public async Task<IActionResult> Create([Bind("NumeroLegajo,ConceptoId,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto, int? numeroLegajo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(legajo);
+                concepto.Legajo = _context.Legajos
+                    .FirstOrDefault(l => l.NumeroLegajo == numeroLegajo);
+                _context.Add(concepto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(legajo);
+            return View(concepto);
         }
 
-        // GET: Legajos/Edit/5
+        // GET: Conceptos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace LiquidWork.WebUI.Controllers
                 return NotFound();
             }
 
-            var legajo = await _context.Legajos.FindAsync(id);
-            if (legajo == null)
+            var concepto = await _context.Conceptos.FindAsync(id);
+            if (concepto == null)
             {
                 return NotFound();
             }
-            return View(legajo);
+            return View(concepto);
         }
 
-        // POST: Legajos/Edit/5
+        // POST: Conceptos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LegajoId,NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
+        public async Task<IActionResult> Edit(int id, [Bind("ConceptoId,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto)
         {
-            if (id != legajo.NumeroLegajo)
+            if (id != concepto.ConceptoId)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace LiquidWork.WebUI.Controllers
             {
                 try
                 {
-                    _context.Update(legajo);
+                    _context.Update(concepto);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LegajoExists(legajo.NumeroLegajo))
+                    if (!ConceptoExists(concepto.ConceptoId))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace LiquidWork.WebUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(legajo);
+            return View(concepto);
         }
 
-        // GET: Legajos/Delete/5
+        // GET: Conceptos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace LiquidWork.WebUI.Controllers
                 return NotFound();
             }
 
-            var legajo = await _context.Legajos
-                .FirstOrDefaultAsync(l => l.NumeroLegajo == id);
-            if (legajo == null)
+            var concepto = await _context.Conceptos
+                .FirstOrDefaultAsync(m => m.ConceptoId == id);
+            if (concepto == null)
             {
                 return NotFound();
             }
 
-            return View(legajo);
+            return View(concepto);
         }
 
-        // POST: Legajos/Delete/5
+        // POST: Conceptos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var legajo = await _context.Legajos.FindAsync(id);
-            _context.Legajos.Remove(legajo);
+            var concepto = await _context.Conceptos.FindAsync(id);
+            _context.Conceptos.Remove(concepto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LegajoExists(int id)
+        private bool ConceptoExists(int id)
         {
-            return _context.Legajos.Any(l => l.NumeroLegajo == id);
+            return _context.Conceptos.Any(e => e.ConceptoId == id);
         }
     }
 }
