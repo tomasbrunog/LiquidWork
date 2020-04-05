@@ -5,12 +5,9 @@ using System.Text;
 
 namespace LiquidWork.Core.Contracts.Services
 {
-    public interface ILegajoService
+    public interface IConceptoService
     {
         public void AddConceptoFijo(Legajo legajo, Concepto concepto);
         public void RemoveConceptoFijo(Legajo legajo, Concepto concepto);
-        public void AddLiquidacion(Legajo legajo, Liquidacion liquidacion);
-        public void RemoveLiquidacion(Legajo legajo, Liquidacion liquidacion);
-        
     }
 }
