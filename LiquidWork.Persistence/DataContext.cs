@@ -8,7 +8,6 @@ namespace LiquidWork.Persistence
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
 
-
         public DbSet<Legajo> Legajos { get; set; }
         public DbSet<Liquidacion> Liquidaciones { get; set; }
         public DbSet<Concepto> Conceptos { get; set; }

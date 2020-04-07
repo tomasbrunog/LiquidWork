@@ -53,7 +53,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LegajoId,NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
+        public async Task<IActionResult> Create([Bind("NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LegajoId,NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
+        public async Task<IActionResult> Edit(int id, [Bind("NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
         {
             if (id != legajo.NumeroLegajo)
             {

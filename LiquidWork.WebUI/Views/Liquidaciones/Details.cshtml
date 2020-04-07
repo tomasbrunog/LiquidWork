@@ -1,0 +1,54 @@
+﻿@model LiquidWork.Core.Model.Liquidacion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Liquidacion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Periodo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Periodo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalRemunerativo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalRemunerativo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalNoRemunerativo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalNoRemunerativo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalDeducciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalDeducciones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Neto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Neto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Legajo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Legajo.Apellido)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LiquidacionId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
