@@ -8,10 +8,10 @@ namespace LiquidWork.Core.Model
     {
         public int ConceptoId { get; set; }
         [Range(0, 999)]
-        public int CodigoConcepto { get; }
+        public int CodigoConcepto { get; set; }
         public string NombreConcepto { get; set; }
         [DataType(DataType.Currency)]
-        public decimal Monto { get; set; }
+        public decimal? Monto { get; set; }
         [Range(0, 999)]
         public double Cantidad { get; set; }
         [Range(0, 99)]

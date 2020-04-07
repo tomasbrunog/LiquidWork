@@ -22,6 +22,11 @@
                 <input name="liquidacionId" value=@TempData["liquidacionId"] class="form-control" readonly />
             </div>
             <div class="form-group">
+                <label asp-for="CodigoConcepto" class="control-label"></label>
+                <input asp-for="CodigoConcepto" class="form-control" />
+                <span asp-validation-for="CodigoConcepto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="NombreConcepto" class="control-label"></label>
                 <input asp-for="NombreConcepto" class="form-control" />
                 <span asp-validation-for="NombreConcepto" class="text-danger"></span>
