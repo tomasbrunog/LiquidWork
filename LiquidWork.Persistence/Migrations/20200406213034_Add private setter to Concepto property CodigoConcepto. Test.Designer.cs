@@ -4,14 +4,16 @@ using LiquidWork.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200406213034_Add private setter to Concepto property CodigoConcepto. Test")]
+    partial class AddprivatesettertoConceptopropertyCodigoConceptoTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +40,7 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<int?>("LiquidacionId")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("Monto")
+                    b.Property<decimal>("Monto")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("NombreConcepto")
@@ -57,198 +59,6 @@ namespace LiquidWork.Persistence.Migrations
                     b.HasIndex("LiquidacionId");
 
                     b.ToTable("Conceptos");
-
-                    b.HasData(
-                        new
-                        {
-                            ConceptoId = 30,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 35500m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 11,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 35500m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 12,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 37000m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 13,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 80500m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 14,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 43000m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 15,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 35500m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 16,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 68600m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 17,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 44000m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 18,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 33900m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 19,
-                            Cantidad = 1.0,
-                            CodigoConcepto = 101,
-                            Monto = 44600m,
-                            NombreConcepto = "Sueldo basico",
-                            Precedencia = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 20,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 21,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 22,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 23,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 24,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 25,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 26,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 27,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 28,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 29,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            NombreConcepto = "Jubilacion",
-                            Precedencia = 1,
-                            TipoConcepto = 2
-                        });
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Legajo", b =>

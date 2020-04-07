@@ -7,11 +7,6 @@ namespace LiquidWork.Core.Model
 {
     public class Legajo
     {
-        public Legajo()
-        {
-            ConceptosFijos = new List<Concepto>();
-        }
-
         public int NumeroLegajo { get; set; }
         [MaxLength(50)]
         [Required]
@@ -28,7 +23,7 @@ namespace LiquidWork.Core.Model
         [Required]
         public DateTime FechaIngreso { get; set; }
 
-        public ICollection<Concepto> ConceptosFijos { get; set; }
+        public IEnumerable<Concepto> ConceptosFijos { get; set; }
         public IEnumerable<Liquidacion> Liquidaciones { get; set; }
 
     }

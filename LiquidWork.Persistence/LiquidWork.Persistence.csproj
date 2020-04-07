@@ -13,6 +13,10 @@
     <Compile Remove="Migrations\20200402022158_Change concepto navigation property legajo to required.Designer.cs" />
     <Compile Remove="Migrations\20200402022443_InitialMigration.cs" />
     <Compile Remove="Migrations\20200402022443_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200406213506_Changed Concepto property CodigoConcepto setter to public. Test.cs" />
+    <Compile Remove="Migrations\20200406213506_Changed Concepto property CodigoConcepto setter to public. Test.Designer.cs" />
+    <Compile Remove="Migrations\20200406215027_Make Concepto monto property nullable.cs" />
+    <Compile Remove="Migrations\20200406215027_Make Concepto monto property nullable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
