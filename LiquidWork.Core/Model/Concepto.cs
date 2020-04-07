@@ -18,7 +18,9 @@ namespace LiquidWork.Core.Model
         public int Precedencia { get; set; } 
 
         public TipoConcepto TipoConcepto { get; set; }
+        public int? LiquidacionId { get; set; }
         public Liquidacion Liquidacion { get; set; }
+        public int? NumeroLegajo { get; set; }
         public Legajo Legajo { get; set; }
 
     }

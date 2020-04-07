@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LiquidWork.Core.Model;
+using LiquidWork.Persistence;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using LiquidWork.Core.Model;
-using LiquidWork.Persistence;
 
 namespace LiquidWork.WebUI.Controllers
 {
@@ -34,7 +31,8 @@ namespace LiquidWork.WebUI.Controllers
             }
 
             var legajo = await _context.Legajos
-                .Include(l=>l.ConceptosFijos)
+                .Include(l => l.ConceptosFijos)
+                .Include(l => l.Liquidaciones)
                 .FirstOrDefaultAsync(m => m.NumeroLegajo == id);
             if (legajo == null)
             {

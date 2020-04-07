@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200406215439_Make Concepto monto property nullable")]
-    partial class MakeConceptomontopropertynullable
+    [Migration("20200407172821_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,17 +34,17 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<int>("CodigoConcepto")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LegajoNumeroLegajo")
-                        .HasColumnType("int");
-
                     b.Property<int?>("LiquidacionId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Monto")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (18,2)");
 
                     b.Property<string>("NombreConcepto")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NumeroLegajo")
+                        .HasColumnType("int");
 
                     b.Property<int>("Precedencia")
                         .HasColumnType("int");
@@ -54,9 +54,9 @@ namespace LiquidWork.Persistence.Migrations
 
                     b.HasKey("ConceptoId");
 
-                    b.HasIndex("LegajoNumeroLegajo");
-
                     b.HasIndex("LiquidacionId");
+
+                    b.HasIndex("NumeroLegajo");
 
                     b.ToTable("Conceptos");
 
@@ -68,6 +68,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 35500m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 1,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -78,6 +79,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 35500m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 2,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -88,6 +90,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 37000m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 3,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -98,6 +101,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 80500m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 4,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -108,6 +112,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 43000m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 5,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -118,6 +123,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 35500m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 6,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -128,6 +134,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 68600m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 7,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -138,6 +145,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 44000m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 8,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -148,6 +156,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 33900m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 9,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -158,6 +167,7 @@ namespace LiquidWork.Persistence.Migrations
                             CodigoConcepto = 101,
                             Monto = 44600m,
                             NombreConcepto = "Sueldo basico",
+                            NumeroLegajo = 10,
                             Precedencia = 1,
                             TipoConcepto = 0
                         },
@@ -167,6 +177,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 1,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -176,6 +187,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 2,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -185,6 +197,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 3,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -194,6 +207,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 4,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -203,6 +217,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 5,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -212,6 +227,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 6,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -221,6 +237,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 7,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -230,6 +247,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 8,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -239,6 +257,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 9,
                             Precedencia = 1,
                             TipoConcepto = 2
                         },
@@ -248,6 +267,7 @@ namespace LiquidWork.Persistence.Migrations
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
                             NombreConcepto = "Jubilacion",
+                            NumeroLegajo = 10,
                             Precedencia = 1,
                             TipoConcepto = 2
                         });
@@ -343,7 +363,7 @@ namespace LiquidWork.Persistence.Migrations
                         {
                             NumeroLegajo = 7,
                             Apellido = "Gomez",
-                            CUIL = 2338745526L,
+                            CUIL = 23387455263L,
                             Categoria = "Auxiliar C",
                             FechaIngreso = new DateTime(2018, 7, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Nombre = "Eugenia"
@@ -384,41 +404,41 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LegajoNumeroLegajo")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Neto")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (18,2)");
+
+                    b.Property<int?>("NumeroLegajo")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Periodo")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalDeducciones")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (18,2)");
 
                     b.Property<decimal>("TotalNoRemunerativo")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (18,2)");
 
                     b.Property<decimal>("TotalRemunerativo")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (18,2)");
 
                     b.HasKey("LiquidacionId");
 
-                    b.HasIndex("LegajoNumeroLegajo");
+                    b.HasIndex("NumeroLegajo");
 
                     b.ToTable("Liquidaciones");
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Concepto", b =>
                 {
-                    b.HasOne("LiquidWork.Core.Model.Legajo", "Legajo")
-                        .WithMany("ConceptosFijos")
-                        .HasForeignKey("LegajoNumeroLegajo")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("LiquidWork.Core.Model.Liquidacion", "Liquidacion")
                         .WithMany("Conceptos")
                         .HasForeignKey("LiquidacionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("LiquidWork.Core.Model.Legajo", "Legajo")
+                        .WithMany("ConceptosFijos")
+                        .HasForeignKey("NumeroLegajo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -426,7 +446,7 @@ namespace LiquidWork.Persistence.Migrations
                 {
                     b.HasOne("LiquidWork.Core.Model.Legajo", "Legajo")
                         .WithMany("Liquidaciones")
-                        .HasForeignKey("LegajoNumeroLegajo")
+                        .HasForeignKey("NumeroLegajo")
                         .OnDelete(DeleteBehavior.SetNull);
                 });
 #pragma warning restore 612, 618

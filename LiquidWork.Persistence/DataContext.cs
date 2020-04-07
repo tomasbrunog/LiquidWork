@@ -18,8 +18,15 @@ namespace LiquidWork.Persistence
         {
             builder.Entity<Legajo>(etb =>
             {
-                etb.HasMany(l => l.ConceptosFijos).WithOne(c => c.Legajo).OnDelete(DeleteBehavior.Cascade);
-                etb.HasMany(l => l.Liquidaciones).WithOne(li => li.Legajo).OnDelete(DeleteBehavior.SetNull);
+                etb.HasMany(l => l.ConceptosFijos)
+                .WithOne(c => c.Legajo)
+                .HasForeignKey(c => c.NumeroLegajo)
+                .OnDelete(DeleteBehavior.Cascade);
+
+                etb.HasMany(l => l.Liquidaciones)
+                .WithOne(li => li.Legajo)
+                .HasForeignKey(li => li.NumeroLegajo)
+                .OnDelete(DeleteBehavior.SetNull);
 
                 etb.HasKey(l => l.NumeroLegajo);
                 etb.Property(l => l.FechaIngreso).HasColumnType("date");
@@ -31,13 +38,15 @@ namespace LiquidWork.Persistence
                 .WithOne(c => c.Liquidacion)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //builder.Entity<Liquidacion>(etb =>
-            //{
-            //    etb.Property(li => li.TotalRemunerativo).HasColumnType("money");
-            //    etb.Property(li => li.TotalNoRemunerativo).HasColumnType("money");
-            //    etb.Property(li => li.TotalDeducciones).HasColumnType("money");
-            //    etb.Property(li => li.Neto).HasColumnType("money");
-            //});
+            builder.Entity<Liquidacion>(etb =>
+            {
+                etb.Property(li => li.Neto).HasColumnType("decimal (18,2)");
+                etb.Property(li => li.TotalRemunerativo).HasColumnType("decimal (18,2)");
+                etb.Property(li => li.TotalNoRemunerativo).HasColumnType("decimal (18,2)");
+                etb.Property(li => li.TotalDeducciones).HasColumnType("decimal (18,2)");
+            });
+
+            builder.Entity<Concepto>().Property(c => c.Monto).HasColumnType("decimal (18,2)");
 
             //Data seeding
             builder.Seed();
@@ -45,11 +54,11 @@ namespace LiquidWork.Persistence
             base.OnModelCreating(builder);
         }
 
-        
-        }
-
 
     }
+
+
+}
 
 
 
