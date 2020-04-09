@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200407172821_InitialMigration")]
+    [Migration("20200409133553_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

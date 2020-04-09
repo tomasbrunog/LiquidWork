@@ -12,13 +12,13 @@ namespace LiquidWork.Core.Model
         [DataType(DataType.Date)]
         public DateTime Periodo { get; set; }
         [DataType(DataType.Currency)]
-        public decimal TotalRemunerativo { get; set; }
+        public decimal? TotalRemunerativo { get; set; }
         [DataType(DataType.Currency)]
-        public decimal TotalNoRemunerativo { get; set; }
+        public decimal? TotalNoRemunerativo { get; set; }
         [DataType(DataType.Currency)]
-        public decimal TotalDeducciones { get; set; }
+        public decimal? TotalDeducciones { get; set; }
         [DataType(DataType.Currency)]
-        public decimal Neto { get; set; }
+        public decimal? Neto { get; set; }
 
         public int? NumeroLegajo { get; set; }
         public Legajo Legajo { get; set; }
