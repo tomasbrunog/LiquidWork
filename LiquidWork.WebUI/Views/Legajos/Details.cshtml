@@ -76,6 +76,7 @@
                         @Html.DisplayFor(modelItem => item.Periodo)
                     </td>
                     <td>
+                        <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Details</a> |
                         <a asp-controller="Liquidaciones" asp-action="Edit" asp-route-id="@item.LiquidacionId">Edit</a> |
                         <a asp-controller="Liquidaciones" asp-route-id="@item.LiquidacionId">Delete</a>
                     </td>
@@ -131,6 +132,7 @@
                         @Html.DisplayFor(modelItem => item.TipoConcepto)
                     </td>
                     <td>
+                        <a asp-controller="Conceptos" asp-action="Details" asp-route-id="@item.ConceptoId">Details</a> |
                         <a asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
                         <a asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
                     </td>
