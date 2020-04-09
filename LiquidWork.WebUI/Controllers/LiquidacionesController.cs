@@ -34,6 +34,7 @@ namespace LiquidWork.WebUI.Controllers
 
             var liquidacion = await _context.Liquidaciones
                 .Include(l => l.Legajo)
+                .Include(l=>l.Conceptos)
                 .FirstOrDefaultAsync(m => m.LiquidacionId == id);
             if (liquidacion == null)
             {
