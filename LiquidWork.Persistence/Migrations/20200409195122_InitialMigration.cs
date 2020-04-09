@@ -31,10 +31,10 @@ namespace LiquidWork.Persistence.Migrations
                     LiquidacionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Periodo = table.Column<DateTime>(nullable: false),
-                    TotalRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
-                    TotalNoRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
-                    TotalDeducciones = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
-                    Neto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
+                    TotalRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
+                    TotalNoRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
+                    TotalDeducciones = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
+                    Neto = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
                     NumeroLegajo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -55,7 +55,7 @@ namespace LiquidWork.Persistence.Migrations
                     ConceptoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CodigoConcepto = table.Column<int>(nullable: false),
-                    NombreConcepto = table.Column<string>(nullable: true),
+                    NombreConcepto = table.Column<string>(nullable: false),
                     Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
                     Cantidad = table.Column<double>(nullable: false),
                     Precedencia = table.Column<int>(nullable: false),

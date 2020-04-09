@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200409133553_InitialMigration")]
+    [Migration("20200409195122_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("decimal (18,2)");
 
                     b.Property<string>("NombreConcepto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NumeroLegajo")
@@ -404,7 +405,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Neto")
+                    b.Property<decimal?>("Neto")
                         .HasColumnType("decimal (18,2)");
 
                     b.Property<int?>("NumeroLegajo")
@@ -413,13 +414,13 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<DateTime>("Periodo")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("TotalDeducciones")
+                    b.Property<decimal?>("TotalDeducciones")
                         .HasColumnType("decimal (18,2)");
 
-                    b.Property<decimal>("TotalNoRemunerativo")
+                    b.Property<decimal?>("TotalNoRemunerativo")
                         .HasColumnType("decimal (18,2)");
 
-                    b.Property<decimal>("TotalRemunerativo")
+                    b.Property<decimal?>("TotalRemunerativo")
                         .HasColumnType("decimal (18,2)");
 
                     b.HasKey("LiquidacionId");

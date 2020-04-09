@@ -39,6 +39,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("decimal (18,2)");
 
                     b.Property<string>("NombreConcepto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NumeroLegajo")
