@@ -52,6 +52,38 @@
     <a asp-action="Edit" asp-route-id="@Model.NumeroLegajo">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<hr />
+<h4>Liquidaciones</h4>
+<hr />
+<a asp-controller="Liquidaciones" asp-action="Create" asp-route-id="@Model.NumeroLegajo">Agregar liquidación</a>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Liquidaciones.FirstOrDefault().Periodo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Liquidaciones != null)
+        {
+            foreach (var item in Model.Liquidaciones)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Periodo)
+                    </td>
+                    <td>
+                        <a asp-controller="Liquidaciones" asp-action="Edit" asp-route-id="@item.LiquidacionId">Edit</a> |
+                        <a asp-controller="Liquidaciones" asp-route-id="@item.LiquidacionId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 <h4>Conceptos fijos</h4>
 <hr />
 <a asp-controller="Conceptos" asp-action="Create" asp-route-numerolegajo="@Model.NumeroLegajo" >Agregar concepto fijo</a>
@@ -101,38 +133,6 @@
                     <td>
                         <a asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
                         <a asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
-<hr />
-<h4>Liquidaciones</h4>
-<hr />
-<a asp-controller="Liquidaciones" asp-action="Create" asp-route-id="@Model.NumeroLegajo">Agregar liquidación</a>
-<hr />
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Liquidaciones.FirstOrDefault().Periodo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Liquidaciones != null)
-        {
-            foreach (var item in Model.Liquidaciones)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Periodo)
-                    </td>
-                    <td>
-                        <a asp-controller="Liquidaciones" asp-action="Edit" asp-route-id="@item.LiquidacionId">Edit</a> |
-                        <a asp-controller="Liquidaciones" asp-route-id="@item.LiquidacionId">Delete</a>
                     </td>
                 </tr>
             }
