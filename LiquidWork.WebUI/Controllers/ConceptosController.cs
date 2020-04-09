@@ -62,16 +62,19 @@ namespace LiquidWork.WebUI.Controllers
                 if (numeroLegajo != null)
                 {
                     concepto.Legajo = _context.Legajos
-                .FirstOrDefault(l => l.NumeroLegajo == numeroLegajo); 
+                        .FirstOrDefault(l => l.NumeroLegajo == numeroLegajo);
+                    _context.Add(concepto);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), "Legajos", new { id = concepto.NumeroLegajo });
                 }
                 if (liquidacionId != null)
                 {
                     concepto.Liquidacion = _context.Liquidaciones
-                .FirstOrDefault(l => l.LiquidacionId == liquidacionId); 
+                        .FirstOrDefault(l => l.LiquidacionId == liquidacionId); 
+                    _context.Add(concepto);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
                 }
-                _context.Add(concepto);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
             return View(concepto);
         }
