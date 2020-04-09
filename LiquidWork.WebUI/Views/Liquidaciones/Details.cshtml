@@ -10,40 +10,46 @@
     <h4>Liquidacion</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LiquidacionId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LiquidacionId)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Periodo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Periodo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalRemunerativo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalRemunerativo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalNoRemunerativo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalNoRemunerativo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TotalDeducciones)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TotalDeducciones)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Neto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Neto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Legajo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Legajo.Apellido)
         </dd>
     </dl>
@@ -52,3 +58,59 @@
     <a asp-action="Edit" asp-route-id="@Model.LiquidacionId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<h4>Conceptos fijos</h4>
+<hr />
+<a asp-controller="Conceptos" asp-action="Create" asp-route-LiquidacionId="@Model.LiquidacionId">Agregar concepto</a>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Conceptos.FirstOrDefault().CodigoConcepto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conceptos.FirstOrDefault().NombreConcepto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conceptos.FirstOrDefault().Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conceptos.FirstOrDefault().Monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conceptos.FirstOrDefault().TipoConcepto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Conceptos != null)
+        {
+            foreach (var item in Model.Conceptos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoConcepto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreConcepto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Monto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoConcepto)
+                    </td>
+                    <td>
+                        <a asp-controller="Conceptos" asp-action="Details" asp-route-id="@item.ConceptoId">Details</a> |
+                        <a asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
+                        <a asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
