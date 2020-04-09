@@ -61,7 +61,7 @@ namespace LiquidWork.WebUI.Controllers
             {
                 _context.Add(liquidacion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), "Legajos", new { id = liquidacion.LiquidacionId });
+                return RedirectToAction(nameof(Details), "Legajos", new { id = liquidacion.NumeroLegajo });
             }
             ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "Apellido", liquidacion.NumeroLegajo);
             return View(liquidacion);
