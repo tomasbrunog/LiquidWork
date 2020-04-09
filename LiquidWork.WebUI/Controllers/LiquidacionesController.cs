@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LiquidWork.Core.Model;
+using LiquidWork.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using LiquidWork.Core.Model;
-using LiquidWork.Persistence;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LiquidWork.WebUI.Controllers
 {
@@ -63,7 +61,7 @@ namespace LiquidWork.WebUI.Controllers
             {
                 _context.Add(liquidacion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), "Legajos", new { id = liquidacion.LiquidacionId });
             }
             ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "Apellido", liquidacion.NumeroLegajo);
             return View(liquidacion);
