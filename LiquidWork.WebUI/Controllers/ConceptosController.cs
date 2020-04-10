@@ -44,8 +44,8 @@ namespace LiquidWork.WebUI.Controllers
         // GET: Conceptos/Create
         public IActionResult Create(int? numeroLegajo, int? liquidacionId)
         {
-            TempData["numeroLegajo"] = numeroLegajo;
-            TempData["liquidacionId"] = liquidacionId;
+            TempData["NumeroLegajo"] = numeroLegajo;
+            TempData["LiquidacionId"] = liquidacionId;
             return View();
         }
 
@@ -54,27 +54,13 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumeroLegajo,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto, int? numeroLegajo, int? liquidacionId)
+        public async Task<IActionResult> Create([Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto)
         {
             if (ModelState.IsValid)
             {
-
-                if (numeroLegajo != null)
-                {
-                    concepto.Legajo = _context.Legajos
-                        .FirstOrDefault(l => l.NumeroLegajo == numeroLegajo);
-                    _context.Add(concepto);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Details), "Legajos", new { id = concepto.NumeroLegajo });
-                }
-                if (liquidacionId != null)
-                {
-                    concepto.Liquidacion = _context.Liquidaciones
-                        .FirstOrDefault(l => l.LiquidacionId == liquidacionId); 
-                    _context.Add(concepto);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
-                }
+                _context.Add(concepto);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
             }
             return View(concepto);
         }

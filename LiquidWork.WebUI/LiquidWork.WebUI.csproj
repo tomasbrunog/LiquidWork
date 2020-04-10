@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LiquidWork.Persistence\LiquidWork.Persistence.csproj" />
+    <ProjectReference Include="..\LiquidWork.Services\LiquidWork.Services.csproj" />
   </ItemGroup>
 
 </Project>
