@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidWork.Core\LiquidWork.Core.csproj" />
+    <ProjectReference Include="..\LiquidWork.Persistence\LiquidWork.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

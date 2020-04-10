@@ -1,5 +1,6 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
+using LiquidWork.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace LiquidWork.WebUI.Controllers
     public class ConceptosController : Controller
     {
         private readonly DataContext _context;
+        private readonly ConceptoService _conceptoService;
 
         public ConceptosController(DataContext context)
         {
             _context = context;
+            _conceptoService = new ConceptoService(_context);
         }
 
         // GET: Conceptos
@@ -58,8 +61,8 @@ namespace LiquidWork.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(concepto);
-                await _context.SaveChangesAsync();
+                _conceptoService.AddConcepto(concepto);
+                await _conceptoService.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
             }
             return View(concepto);
