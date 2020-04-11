@@ -12,12 +12,39 @@ namespace LiquidWork.Services
         {
             _context = context;
         }
-        public async void AddConcepto(Concepto concepto)
+
+        public void AddConcepto(Concepto concepto)
+        {
+            _context.Add(concepto);
+            UpdateNeto(concepto);
+        }
+        public async void UpdateNeto(Concepto newConcepto)
         {
             var liquidacion = await _context.Liquidaciones
                 .Include(li => li.Conceptos)
-                .FirstOrDefaultAsync(li => li.LiquidacionId == concepto.LiquidacionId);
+                .FirstOrDefaultAsync(li => li.LiquidacionId == newConcepto.LiquidacionId);
 
+            liquidacion.Neto = 0;
+            foreach (var item in liquidacion.Conceptos)
+            {
+                liquidacion.Neto += item.Monto;
+            }
+        }        
+        public async void UpdateNeto(int? liquidacionId)
+        {
+            var liquidacion = await _context.Liquidaciones
+                .Include(li => li.Conceptos)
+                .FirstOrDefaultAsync(li => li.LiquidacionId == liquidacionId);
+
+            liquidacion.Neto = 0;
+            foreach (var item in liquidacion.Conceptos)
+            {
+                liquidacion.Neto += item.Monto;
+            }
+        }        
+
+        public void UpdateNeto(Liquidacion liquidacion)
+        {
             liquidacion.Neto = 0;
             foreach (var item in liquidacion.Conceptos)
             {
