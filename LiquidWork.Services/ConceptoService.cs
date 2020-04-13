@@ -17,9 +17,8 @@ namespace LiquidWork.Services
         }
         public void AddConcepto(Concepto concepto)
         {
-            _context.Add(concepto);
-            var _liquidacionService = new LiquidacionService(_context);
-            _liquidacionService.UpdateNeto(concepto.LiquidacionId);
+           var _liquidacionService = new LiquidacionService(_context);
+            _liquidacionService.AddConcepto(concepto);
         }
         public Task<int> SaveChangesAsync() => _context.SaveChangesAsync();
     }

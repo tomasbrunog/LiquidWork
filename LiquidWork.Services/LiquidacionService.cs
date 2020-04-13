@@ -1,7 +1,7 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace LiquidWork.Services
 {
@@ -16,7 +16,13 @@ namespace LiquidWork.Services
         public void AddConcepto(Concepto concepto)
         {
             _context.Add(concepto);
-            UpdateNeto(concepto);
+
+            var liquidacion = _context
+                .Liquidaciones
+                .Include(li => li.Conceptos)
+                .FirstOrDefault(li => li.LiquidacionId == concepto.LiquidacionId);
+
+            UpdateNeto(liquidacion);
         }
         public async void UpdateNeto(Concepto newConcepto)
         {
@@ -29,7 +35,7 @@ namespace LiquidWork.Services
             {
                 liquidacion.Neto += item.Monto;
             }
-        }        
+        }
         public async void UpdateNeto(int? liquidacionId)
         {
             var liquidacion = await _context.Liquidaciones
@@ -41,7 +47,7 @@ namespace LiquidWork.Services
             {
                 liquidacion.Neto += item.Monto;
             }
-        }        
+        }
 
         public void UpdateNeto(Liquidacion liquidacion)
         {
