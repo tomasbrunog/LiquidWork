@@ -89,7 +89,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto)
+        public async Task<IActionResult> Edit(int id, [Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto)
         {
             if (id != concepto.ConceptoId)
             {
@@ -100,8 +100,8 @@ namespace LiquidWork.WebUI.Controllers
             {
                 try
                 {
-                    _context.Update(concepto);
-                    await _context.SaveChangesAsync();
+                    _conceptoService.UpdateConcepto(concepto);
+                    await _conceptoService.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -114,7 +114,7 @@ namespace LiquidWork.WebUI.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
             }
             return View(concepto);
         }
@@ -128,7 +128,7 @@ namespace LiquidWork.WebUI.Controllers
             }
 
             var concepto = await _context.Conceptos
-                .FirstOrDefaultAsync(m => m.ConceptoId == id);
+                .FirstOrDefaultAsync(c => c.ConceptoId == id);
             if (concepto == null)
             {
                 return NotFound();
@@ -143,9 +143,9 @@ namespace LiquidWork.WebUI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var concepto = await _context.Conceptos.FindAsync(id);
-            _context.Conceptos.Remove(concepto);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _conceptoService.DeleteConcepto(concepto);
+            await _conceptoService.SaveChangesAsync();
+            return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
         }
 
         private bool ConceptoExists(int id)

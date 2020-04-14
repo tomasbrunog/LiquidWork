@@ -25,11 +25,23 @@ namespace LiquidWork.Services
             UpdateNeto(liquidacion);
         }
 
-        public async void UpdateNeto(Concepto newConcepto)
+        public void RemoveConcepto(Concepto concepto)
+        {
+            var liquidacion = _context
+                .Liquidaciones
+                .Include(li => li.Conceptos)
+                .FirstOrDefault(li => li.LiquidacionId == concepto.LiquidacionId);
+
+            liquidacion.Conceptos = liquidacion.Conceptos.Where(c => c != concepto).ToList();
+
+            UpdateNeto(liquidacion);
+        }
+
+        public async void UpdateNeto(Concepto concepto)
         {
             var liquidacion = await _context.Liquidaciones
                 .Include(li => li.Conceptos)
-                .FirstOrDefaultAsync(li => li.LiquidacionId == newConcepto.LiquidacionId);
+                .FirstOrDefaultAsync(li => li.LiquidacionId == concepto.LiquidacionId);
 
             decimal? neto = 0;
             foreach (var item in liquidacion.Conceptos)
@@ -39,11 +51,11 @@ namespace LiquidWork.Services
             liquidacion.Neto = neto;
         }
 
-        public async void UpdateNeto(int? liquidacionId)
+        public void UpdateNeto(int? liquidacionId)
         {
-            var liquidacion = await _context.Liquidaciones
+            var liquidacion = _context.Liquidaciones
                 .Include(li => li.Conceptos)
-                .FirstOrDefaultAsync(li => li.LiquidacionId == liquidacionId);
+                .FirstOrDefault(li => li.LiquidacionId == liquidacionId);
 
             decimal? neto = 0;
             foreach (var item in liquidacion.Conceptos)
