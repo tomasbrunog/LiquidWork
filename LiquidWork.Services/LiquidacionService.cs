@@ -1,6 +1,7 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LiquidWork.Services
@@ -17,12 +18,7 @@ namespace LiquidWork.Services
         {
             _context.Add(concepto);
 
-            var liquidacion = _context
-                .Liquidaciones
-                .Include(li => li.Conceptos)
-                .FirstOrDefault(li => li.LiquidacionId == concepto.LiquidacionId);
-
-            UpdateNeto(liquidacion);
+            UpdateTotales(concepto.LiquidacionId);
         }
 
         public void RemoveConcepto(Concepto concepto)
@@ -34,48 +30,42 @@ namespace LiquidWork.Services
 
             liquidacion.Conceptos = liquidacion.Conceptos.Where(c => c != concepto).ToList();
 
-            UpdateNeto(liquidacion);
+            UpdateTotales(liquidacion);
         }
 
-        public async void UpdateNeto(Concepto concepto)
+        public void UpdateTotales(Liquidacion liquidacion)
         {
-            var liquidacion = await _context.Liquidaciones
-                .Include(li => li.Conceptos)
-                .FirstOrDefaultAsync(li => li.LiquidacionId == concepto.LiquidacionId);
+            decimal? subTotalRemunerativo = 0;
+            decimal? subTotalNoRemunerativo = 0;
+            decimal? subTotalDeducciones = 0;
 
-            decimal? neto = 0;
+            List<decimal?> subTotals = new List<decimal?>
+            {
+                subTotalRemunerativo,
+                subTotalNoRemunerativo,
+                subTotalDeducciones
+            };
+
             foreach (var item in liquidacion.Conceptos)
             {
-                neto += item.Monto;
+                subTotals[(int)item.TipoConcepto] += item.Monto;
             }
-            liquidacion.Neto = neto;
-        }
 
-        public void UpdateNeto(int? liquidacionId)
+            liquidacion.TotalRemunerativo = subTotals[0];
+            liquidacion.TotalNoRemunerativo = subTotals[1];
+            liquidacion.TotalDeducciones = subTotals[2];
+
+            liquidacion.Neto = liquidacion.TotalRemunerativo
+                + liquidacion.TotalNoRemunerativo
+                + liquidacion.TotalDeducciones;
+        }
+        public void UpdateTotales(int? liquidacionId)
         {
             var liquidacion = _context.Liquidaciones
                 .Include(li => li.Conceptos)
                 .FirstOrDefault(li => li.LiquidacionId == liquidacionId);
 
-            decimal? neto = 0;
-            foreach (var item in liquidacion.Conceptos)
-            {
-                neto += item.Monto;
-            }
-            liquidacion.Neto = neto;
+            UpdateTotales(liquidacion);
         }
-
-        public void UpdateNeto(Liquidacion liquidacion)
-        {
-            decimal? neto = 0;
-            foreach (var item in liquidacion.Conceptos)
-            {
-                neto += item.Monto;
-            }
-            liquidacion.Neto = neto;
-
-        }
-
-
     }
 }

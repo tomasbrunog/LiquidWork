@@ -22,6 +22,7 @@ namespace LiquidWork.Services
         {
             _liquidacionService.AddConcepto(concepto);
         }
+
         public void DeleteConcepto(Concepto concepto)
         {
             _liquidacionService.RemoveConcepto(concepto);
@@ -30,7 +31,8 @@ namespace LiquidWork.Services
         public void UpdateConcepto(Concepto concepto)
         {
             _context.Update(concepto);
-            _liquidacionService.UpdateNeto(concepto.LiquidacionId);
+            _liquidacionService.UpdateTotales(concepto.LiquidacionId);
+
         }
 
         public Task<int> SaveChangesAsync() => _context.SaveChangesAsync();
