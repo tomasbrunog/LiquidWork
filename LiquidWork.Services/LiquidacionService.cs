@@ -56,7 +56,7 @@ namespace LiquidWork.Services
 
             liquidacion.Neto = liquidacion.TotalRemunerativo
                 + liquidacion.TotalNoRemunerativo
-                + liquidacion.TotalDeducciones;
+                - liquidacion.TotalDeducciones;
         }
         public void UpdateTotales(int? liquidacionId)
         {
