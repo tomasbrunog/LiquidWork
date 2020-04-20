@@ -25,5 +25,12 @@ namespace LiquidWork.Core.Model
         public virtual Legajo Legajo { get; set; }
 
     }
+
+    public enum TipoConcepto
+    {
+        Remunerativo,
+        NoRemunerativo,
+        Deduccion
+    }
 }
 
