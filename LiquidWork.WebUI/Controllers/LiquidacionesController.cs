@@ -20,7 +20,7 @@ namespace LiquidWork.WebUI.Controllers
         // GET: Liquidaciones
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Liquidaciones.Include(l => l.Legajo);
+            var dataContext = _context.Liquidaciones;
             return View(await dataContext.ToListAsync());
         }
 
@@ -33,8 +33,6 @@ namespace LiquidWork.WebUI.Controllers
             }
 
             var liquidacion = await _context.Liquidaciones
-                .Include(l => l.Legajo)
-                .Include(l => l.Conceptos)
                 .FirstOrDefaultAsync(m => m.LiquidacionId == id);
             if (liquidacion == null)
             {
@@ -130,7 +128,6 @@ namespace LiquidWork.WebUI.Controllers
             }
 
             var liquidacion = await _context.Liquidaciones
-                .Include(l => l.Legajo)
                 .FirstOrDefaultAsync(m => m.LiquidacionId == id);
             if (liquidacion == null)
             {

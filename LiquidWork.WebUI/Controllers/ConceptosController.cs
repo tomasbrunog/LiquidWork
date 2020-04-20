@@ -34,7 +34,6 @@ namespace LiquidWork.WebUI.Controllers
             }
 
             var concepto = await _context.Conceptos
-                .Include(c=>c.Legajo)
                 .FirstOrDefaultAsync(m => m.ConceptoId == id);
             if (concepto == null)
             {

@@ -25,7 +25,6 @@ namespace LiquidWork.Services
         {
             var liquidacion = _context
                 .Liquidaciones
-                .Include(li => li.Conceptos)
                 .FirstOrDefault(li => li.LiquidacionId == concepto.LiquidacionId);
 
             liquidacion.Conceptos = liquidacion.Conceptos.Where(c => c != concepto).ToList();
@@ -62,7 +61,6 @@ namespace LiquidWork.Services
         public void UpdateTotales(int? liquidacionId)
         {
             var liquidacion = _context.Liquidaciones
-                .Include(li => li.Conceptos)
                 .FirstOrDefault(li => li.LiquidacionId == liquidacionId);
 
             UpdateTotales(liquidacion);

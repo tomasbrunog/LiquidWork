@@ -31,8 +31,6 @@ namespace LiquidWork.WebUI.Controllers
             }
 
             var legajo = await _context.Legajos
-                .Include(l => l.ConceptosFijos)
-                .Include(l => l.Liquidaciones)
                 .FirstOrDefaultAsync(m => m.NumeroLegajo == id);
             if (legajo == null)
             {

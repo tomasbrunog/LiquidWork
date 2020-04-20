@@ -22,8 +22,8 @@ namespace LiquidWork.Core.Model
         public decimal? Neto { get; set; }
 
         public int? NumeroLegajo { get; set; }
-        public Legajo Legajo { get; set; }
-        public ICollection<Concepto> Conceptos { get; set; }
+        public virtual Legajo Legajo { get; set; }
+        public virtual ICollection<Concepto> Conceptos { get; set; }
 
     }
 }

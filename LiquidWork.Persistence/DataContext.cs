@@ -12,6 +12,11 @@ namespace LiquidWork.Persistence
         public DbSet<Liquidacion> Liquidaciones { get; set; }
         public DbSet<Concepto> Conceptos { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

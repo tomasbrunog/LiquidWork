@@ -23,8 +23,8 @@ namespace LiquidWork.Core.Model
         [Required]
         public DateTime FechaIngreso { get; set; }
 
-        public ICollection<Concepto> ConceptosFijos { get; set; }
-        public ICollection<Liquidacion> Liquidaciones { get; set; }
+        public virtual ICollection<Concepto> ConceptosFijos { get; set; }
+        public virtual ICollection<Liquidacion> Liquidaciones { get; set; }
 
     }
 }

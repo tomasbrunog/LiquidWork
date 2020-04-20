@@ -17,12 +17,12 @@ namespace LiquidWork.Core.Model
         public double Cantidad { get; set; }
         [Range(0, 99)]
         public int Precedencia { get; set; } 
-
         public TipoConcepto TipoConcepto { get; set; }
+
         public int? LiquidacionId { get; set; }
-        public Liquidacion Liquidacion { get; set; }
+        public virtual Liquidacion Liquidacion { get; set; }
         public int? NumeroLegajo { get; set; }
-        public Legajo Legajo { get; set; }
+        public virtual Legajo Legajo { get; set; }
 
     }
 }
