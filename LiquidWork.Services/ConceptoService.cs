@@ -32,7 +32,6 @@ namespace LiquidWork.Services
         {
             _context.Update(concepto);
             _liquidacionService.UpdateTotales(concepto.LiquidacionId);
-
         }
 
         public Task<int> SaveChangesAsync() => _context.SaveChangesAsync();

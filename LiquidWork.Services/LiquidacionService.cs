@@ -1,6 +1,5 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,27 +22,15 @@ namespace LiquidWork.Services
 
         public void RemoveConcepto(Concepto concepto)
         {
-            var liquidacion = _context
-                .Liquidaciones
-                .FirstOrDefault(li => li.LiquidacionId == concepto.LiquidacionId);
-
-            liquidacion.Conceptos = liquidacion.Conceptos.Where(c => c != concepto).ToList();
+            var liquidacion = concepto.Liquidacion;
+            liquidacion.Conceptos.Remove(concepto);
 
             UpdateTotales(liquidacion);
         }
 
         public void UpdateTotales(Liquidacion liquidacion)
         {
-            decimal? subTotalRemunerativo = 0;
-            decimal? subTotalNoRemunerativo = 0;
-            decimal? subTotalDeducciones = 0;
-
-            List<decimal?> subTotals = new List<decimal?>
-            {
-                subTotalRemunerativo,
-                subTotalNoRemunerativo,
-                subTotalDeducciones
-            };
+            var subTotals = new List<decimal?> { 0, 0, 0 };
 
             foreach (var item in liquidacion.Conceptos)
             {
@@ -58,6 +45,7 @@ namespace LiquidWork.Services
                 + liquidacion.TotalNoRemunerativo
                 - liquidacion.TotalDeducciones;
         }
+
         public void UpdateTotales(int? liquidacionId)
         {
             var liquidacion = _context.Liquidaciones
