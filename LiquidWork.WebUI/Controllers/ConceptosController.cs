@@ -56,7 +56,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto)
+        public async Task<IActionResult> Create([Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,TipoConcepto")] Concepto concepto)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,Precedencia,TipoConcepto")] Concepto concepto)
+        public async Task<IActionResult> Edit(int id, [Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,TipoConcepto")] Concepto concepto)
         {
             if (id != concepto.ConceptoId)
             {

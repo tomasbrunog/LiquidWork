@@ -16,7 +16,6 @@ namespace LiquidWork.Core.Model
         [Range(0, 999)]
         public double Cantidad { get; set; }
         [Range(0, 99)]
-        public int Precedencia { get; set; } 
         public TipoConcepto TipoConcepto { get; set; }
 
         public int? LiquidacionId { get; set; }
