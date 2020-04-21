@@ -50,7 +50,7 @@
             @Html.DisplayNameFor(model => model.Legajo)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Legajo.Apellido)
+            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.Legajo.Apellido)</a>
         </dd>
     </dl>
 </div>

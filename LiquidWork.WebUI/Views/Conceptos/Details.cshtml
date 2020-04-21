@@ -13,14 +13,14 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Legajo.NumeroLegajo)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Legajo.NumeroLegajo)
+        <dd class="col-sm-10">
+            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.Legajo.NumeroLegajo)</a>           
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Liquidacion.LiquidacionId)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Liquidacion.LiquidacionId)
+        <dd class="col-sm-10">
+            <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@Model.LiquidacionId">@Html.DisplayFor(model => model.Liquidacion.LiquidacionId)</a>           
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CodigoConcepto)
