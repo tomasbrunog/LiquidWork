@@ -11,6 +11,7 @@ namespace LiquidWork.Core.Model
     {
         public int LiquidacionId { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MMMM yyyy}")]
         public DateTime Periodo { get; set; }
         [DataType(DataType.Currency)]
         public decimal? TotalRemunerativo { get; set; }

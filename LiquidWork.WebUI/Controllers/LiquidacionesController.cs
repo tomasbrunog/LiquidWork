@@ -45,7 +45,7 @@ namespace LiquidWork.WebUI.Controllers
         // GET: Liquidaciones/Create
         public IActionResult Create()
         {
-            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "Apellido");
+            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo");
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LiquidacionId,Periodo,TotalRemunerativo,TotalNoRemunerativo,TotalDeducciones,Neto,NumeroLegajo")] Liquidacion liquidacion)
+        public async Task<IActionResult> Create([Bind("LiquidacionId,Periodo,NumeroLegajo")] Liquidacion liquidacion)
         {
             if (ModelState.IsValid)
             {
@@ -62,60 +62,7 @@ namespace LiquidWork.WebUI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), "Legajos", new { id = liquidacion.NumeroLegajo });
             }
-            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "Apellido", liquidacion.NumeroLegajo);
-            return View(liquidacion);
-        }
-
-        // GET: Liquidaciones/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var liquidacion = await _context.Liquidaciones.FindAsync(id);
-            if (liquidacion == null)
-            {
-                return NotFound();
-            }
-            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "Apellido", liquidacion.NumeroLegajo);
-            return View(liquidacion);
-        }
-
-        // POST: Liquidaciones/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LiquidacionId,Periodo,TotalRemunerativo,TotalNoRemunerativo,TotalDeducciones,Neto,NumeroLegajo")] Liquidacion liquidacion)
-        {
-            if (id != liquidacion.LiquidacionId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(liquidacion);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LiquidacionExists(liquidacion.LiquidacionId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "Apellido", liquidacion.NumeroLegajo);
+            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo", liquidacion.NumeroLegajo);
             return View(liquidacion);
         }
 
