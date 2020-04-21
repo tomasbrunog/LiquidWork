@@ -86,7 +86,7 @@
     <tbody>
         @if (Model.Conceptos != null)
         {
-            foreach (var item in Model.Conceptos)
+            foreach (var item in Model.Conceptos.OrderBy(c=>c.TipoConcepto))
             {
                 <tr>
                     <td>
