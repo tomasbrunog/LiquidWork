@@ -26,7 +26,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Cantidad")
+                    b.Property<double?>("Cantidad")
                         .HasColumnType("float");
 
                     b.Property<int>("CodigoConcepto")
@@ -35,7 +35,7 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<int?>("LiquidacionId")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("Monto")
+                    b.Property<decimal>("Monto")
                         .HasColumnType("decimal (18,2)");
 
                     b.Property<string>("NombreConcepto")
@@ -162,6 +162,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 20,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 1,
                             TipoConcepto = 2
@@ -171,6 +172,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 21,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 2,
                             TipoConcepto = 2
@@ -180,6 +182,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 22,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 3,
                             TipoConcepto = 2
@@ -189,6 +192,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 23,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 4,
                             TipoConcepto = 2
@@ -198,6 +202,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 24,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 5,
                             TipoConcepto = 2
@@ -207,6 +212,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 25,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 6,
                             TipoConcepto = 2
@@ -216,6 +222,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 26,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 7,
                             TipoConcepto = 2
@@ -225,6 +232,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 27,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 8,
                             TipoConcepto = 2
@@ -234,6 +242,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 28,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 9,
                             TipoConcepto = 2
@@ -243,6 +252,7 @@ namespace LiquidWork.Persistence.Migrations
                             ConceptoId = 29,
                             Cantidad = 11.0,
                             CodigoConcepto = 201,
+                            Monto = 0m,
                             NombreConcepto = "Jubilacion",
                             NumeroLegajo = 10,
                             TipoConcepto = 2

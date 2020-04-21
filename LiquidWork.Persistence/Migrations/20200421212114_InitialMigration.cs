@@ -56,9 +56,8 @@ namespace LiquidWork.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CodigoConcepto = table.Column<int>(nullable: false),
                     NombreConcepto = table.Column<string>(nullable: false),
-                    Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
-                    Cantidad = table.Column<double>(nullable: false),
-                    Precedencia = table.Column<int>(nullable: false),
+                    Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
+                    Cantidad = table.Column<double>(nullable: true),
                     TipoConcepto = table.Column<int>(nullable: false),
                     LiquidacionId = table.Column<int>(nullable: true),
                     NumeroLegajo = table.Column<int>(nullable: true)
@@ -99,29 +98,29 @@ namespace LiquidWork.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Conceptos",
-                columns: new[] { "ConceptoId", "Cantidad", "CodigoConcepto", "LiquidacionId", "Monto", "NombreConcepto", "NumeroLegajo", "Precedencia", "TipoConcepto" },
+                columns: new[] { "ConceptoId", "Cantidad", "CodigoConcepto", "LiquidacionId", "Monto", "NombreConcepto", "NumeroLegajo", "TipoConcepto" },
                 values: new object[,]
                 {
-                    { 30, 1.0, 101, null, 35500m, "Sueldo basico", 1, 1, 0 },
-                    { 28, 11.0, 201, null, null, "Jubilacion", 9, 1, 2 },
-                    { 18, 1.0, 101, null, 33900m, "Sueldo basico", 9, 1, 0 },
-                    { 27, 11.0, 201, null, null, "Jubilacion", 8, 1, 2 },
-                    { 17, 1.0, 101, null, 44000m, "Sueldo basico", 8, 1, 0 },
-                    { 26, 11.0, 201, null, null, "Jubilacion", 7, 1, 2 },
-                    { 16, 1.0, 101, null, 68600m, "Sueldo basico", 7, 1, 0 },
-                    { 25, 11.0, 201, null, null, "Jubilacion", 6, 1, 2 },
-                    { 15, 1.0, 101, null, 35500m, "Sueldo basico", 6, 1, 0 },
-                    { 24, 11.0, 201, null, null, "Jubilacion", 5, 1, 2 },
-                    { 14, 1.0, 101, null, 43000m, "Sueldo basico", 5, 1, 0 },
-                    { 23, 11.0, 201, null, null, "Jubilacion", 4, 1, 2 },
-                    { 13, 1.0, 101, null, 80500m, "Sueldo basico", 4, 1, 0 },
-                    { 22, 11.0, 201, null, null, "Jubilacion", 3, 1, 2 },
-                    { 12, 1.0, 101, null, 37000m, "Sueldo basico", 3, 1, 0 },
-                    { 21, 11.0, 201, null, null, "Jubilacion", 2, 1, 2 },
-                    { 11, 1.0, 101, null, 35500m, "Sueldo basico", 2, 1, 0 },
-                    { 20, 11.0, 201, null, null, "Jubilacion", 1, 1, 2 },
-                    { 19, 1.0, 101, null, 44600m, "Sueldo basico", 10, 1, 0 },
-                    { 29, 11.0, 201, null, null, "Jubilacion", 10, 1, 2 }
+                    { 30, 1.0, 101, null, 35500m, "Sueldo basico", 1, 0 },
+                    { 28, 11.0, 201, null, 0m, "Jubilacion", 9, 2 },
+                    { 18, 1.0, 101, null, 33900m, "Sueldo basico", 9, 0 },
+                    { 27, 11.0, 201, null, 0m, "Jubilacion", 8, 2 },
+                    { 17, 1.0, 101, null, 44000m, "Sueldo basico", 8, 0 },
+                    { 26, 11.0, 201, null, 0m, "Jubilacion", 7, 2 },
+                    { 16, 1.0, 101, null, 68600m, "Sueldo basico", 7, 0 },
+                    { 25, 11.0, 201, null, 0m, "Jubilacion", 6, 2 },
+                    { 15, 1.0, 101, null, 35500m, "Sueldo basico", 6, 0 },
+                    { 24, 11.0, 201, null, 0m, "Jubilacion", 5, 2 },
+                    { 14, 1.0, 101, null, 43000m, "Sueldo basico", 5, 0 },
+                    { 23, 11.0, 201, null, 0m, "Jubilacion", 4, 2 },
+                    { 13, 1.0, 101, null, 80500m, "Sueldo basico", 4, 0 },
+                    { 22, 11.0, 201, null, 0m, "Jubilacion", 3, 2 },
+                    { 12, 1.0, 101, null, 37000m, "Sueldo basico", 3, 0 },
+                    { 21, 11.0, 201, null, 0m, "Jubilacion", 2, 2 },
+                    { 11, 1.0, 101, null, 35500m, "Sueldo basico", 2, 0 },
+                    { 20, 11.0, 201, null, 0m, "Jubilacion", 1, 2 },
+                    { 19, 1.0, 101, null, 44600m, "Sueldo basico", 10, 0 },
+                    { 29, 11.0, 201, null, 0m, "Jubilacion", 10, 2 }
                 });
 
             migrationBuilder.CreateIndex(

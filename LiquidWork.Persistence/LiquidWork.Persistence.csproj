@@ -5,17 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200409201226_Prueba NombreConcepto required attribute.cs" />
-    <Compile Remove="Migrations\20200409201226_Prueba NombreConcepto required attribute.Designer.cs" />
-    <Compile Remove="Migrations\20200414210806_Change totalremunerativo prop from liquidaciones setter.cs" />
-    <Compile Remove="Migrations\20200414210806_Change totalremunerativo prop from liquidaciones setter.Designer.cs" />
-    <Compile Remove="Migrations\20200420222553_Add lazy loading.cs" />
-    <Compile Remove="Migrations\20200420222553_Add lazy loading.Designer.cs" />
-    <Compile Remove="Migrations\20200421195157_Change liquidacion periodo property date format.cs" />
-    <Compile Remove="Migrations\20200421195157_Change liquidacion periodo property date format.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">

@@ -33,16 +33,16 @@ namespace LiquidWork.Persistence
                 new Concepto { ConceptoId = 18, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 1, Monto = 33900, NumeroLegajo = 9, LiquidacionId = null },
                 new Concepto { ConceptoId = 19, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 1, Monto = 44600, NumeroLegajo = 10, LiquidacionId = null },
 
-                new Concepto { ConceptoId = 20, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 1, LiquidacionId = null },
-                new Concepto { ConceptoId = 21, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 2, LiquidacionId = null },
-                new Concepto { ConceptoId = 22, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 3, LiquidacionId = null },
-                new Concepto { ConceptoId = 23, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 4, LiquidacionId = null },
-                new Concepto { ConceptoId = 24, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 5, LiquidacionId = null },
-                new Concepto { ConceptoId = 25, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 6, LiquidacionId = null },
-                new Concepto { ConceptoId = 26, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 7, LiquidacionId = null },
-                new Concepto { ConceptoId = 27, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 8, LiquidacionId = null },
-                new Concepto { ConceptoId = 28, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 9, LiquidacionId = null },
-                new Concepto { ConceptoId = 29, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = null, NumeroLegajo = 10, LiquidacionId = null }
+                new Concepto { ConceptoId = 20, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 1, LiquidacionId = null },
+                new Concepto { ConceptoId = 21, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 2, LiquidacionId = null },
+                new Concepto { ConceptoId = 22, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 3, LiquidacionId = null },
+                new Concepto { ConceptoId = 23, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 4, LiquidacionId = null },
+                new Concepto { ConceptoId = 24, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 5, LiquidacionId = null },
+                new Concepto { ConceptoId = 25, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 6, LiquidacionId = null },
+                new Concepto { ConceptoId = 26, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 7, LiquidacionId = null },
+                new Concepto { ConceptoId = 27, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 8, LiquidacionId = null },
+                new Concepto { ConceptoId = 28, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 9, LiquidacionId = null },
+                new Concepto { ConceptoId = 29, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, NumeroLegajo = 10, LiquidacionId = null }
 
             );
 
