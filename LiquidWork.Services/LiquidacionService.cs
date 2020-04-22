@@ -2,6 +2,7 @@
 using LiquidWork.Persistence;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LiquidWork.Services
 {
@@ -20,6 +21,13 @@ namespace LiquidWork.Services
             UpdateTotales(concepto.LiquidacionId);
         }
 
+        public void AddLiquidacion(Liquidacion liquidacion)
+        {
+            _context.Add(liquidacion);
+
+            UpdateTotales(liquidacion);
+        }
+
         public void RemoveConcepto(Concepto concepto)
         {
             var liquidacion = concepto.Liquidacion;
@@ -32,9 +40,12 @@ namespace LiquidWork.Services
         {
             var subTotals = new List<decimal?> { 0, 0, 0 };
 
-            foreach (var item in liquidacion.Conceptos)
+            if (liquidacion.Conceptos != null)
             {
-                subTotals[(int)item.TipoConcepto] += item.Monto;
+                foreach (var item in liquidacion.Conceptos)
+                {
+                    subTotals[(int)item.TipoConcepto] += item.Monto;
+                } 
             }
 
             liquidacion.TotalRemunerativo = subTotals[0];
@@ -53,5 +64,7 @@ namespace LiquidWork.Services
 
             UpdateTotales(liquidacion);
         }
+
+        public Task<int> SaveChangesAsync() => _context.SaveChangesAsync();
     }
 }

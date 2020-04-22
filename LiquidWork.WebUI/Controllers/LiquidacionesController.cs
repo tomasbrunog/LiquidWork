@@ -1,5 +1,6 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
+using LiquidWork.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,12 @@ namespace LiquidWork.WebUI.Controllers
     public class LiquidacionesController : Controller
     {
         private readonly DataContext _context;
+        private readonly LiquidacionService _liquidacionService;
 
         public LiquidacionesController(DataContext context)
         {
             _context = context;
+            _liquidacionService = new LiquidacionService(_context);
         }
 
         // GET: Liquidaciones
@@ -58,9 +61,9 @@ namespace LiquidWork.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(liquidacion);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), "Legajos", new { id = liquidacion.NumeroLegajo });
+                _liquidacionService.AddLiquidacion(liquidacion);
+                await _liquidacionService.SaveChangesAsync();
+                return RedirectToAction(nameof(Details), new { id = liquidacion.LiquidacionId});
             }
             ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo", liquidacion.NumeroLegajo);
             return View(liquidacion);
