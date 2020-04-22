@@ -10,46 +10,52 @@
     <h4>Concepto</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            Empleado
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.Liquidacion.NumeroLegajo">@Html.DisplayFor(model => model.Liquidacion.Legajo.Nombre) @Html.DisplayFor(model => model.Liquidacion.Legajo.Apellido)</a>
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Legajo.NumeroLegajo)
         </dt>
         <dd class="col-sm-10">
-            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.Legajo.NumeroLegajo)</a>           
+            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.Liquidacion.NumeroLegajo">@Html.DisplayFor(model => model.Liquidacion.NumeroLegajo)</a>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Liquidacion.LiquidacionId)
         </dt>
         <dd class="col-sm-10">
-            <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@Model.LiquidacionId">@Html.DisplayFor(model => model.Liquidacion.LiquidacionId)</a>           
+            <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@Model.LiquidacionId">@Html.DisplayFor(model => model.Liquidacion.LiquidacionId)</a>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CodigoConcepto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CodigoConcepto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NombreConcepto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NombreConcepto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Monto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Monto)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cantidad)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cantidad)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TipoConcepto)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TipoConcepto)
         </dd>
     </dl>
