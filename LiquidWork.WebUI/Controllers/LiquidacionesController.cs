@@ -46,9 +46,9 @@ namespace LiquidWork.WebUI.Controllers
         }
 
         // GET: Liquidaciones/Create
-        public IActionResult Create()
+        public IActionResult Create(int numeroLegajo)
         {
-            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo");
+            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo", numeroLegajo);
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LiquidacionId,Periodo,NumeroLegajo")] Liquidacion liquidacion)
+        public async Task<IActionResult> Create([Bind("Periodo,NumeroLegajo")] Liquidacion liquidacion)
         {
             if (ModelState.IsValid)
             {
