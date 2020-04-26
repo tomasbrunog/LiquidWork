@@ -1,6 +1,7 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
 using LiquidWork.Services;
+using LiquidWork.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -44,9 +45,8 @@ namespace LiquidWork.WebUI.Controllers
         }
 
         // GET: Conceptos/Create
-        public IActionResult Create(int? numeroLegajo, int? liquidacionId)
+        public IActionResult Create(int? liquidacionId)
         {
-            TempData["NumeroLegajo"] = numeroLegajo;
             TempData["LiquidacionId"] = liquidacionId;
             return View();
         }
@@ -56,15 +56,25 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,TipoConcepto")] Concepto concepto)
+        public async Task<IActionResult> Create(ConceptoViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var concepto = new Concepto
+                {
+                    CodigoConcepto = vm.CodigoConcepto,
+                    NombreConcepto = vm.NombreConcepto,
+                    Monto = vm.Monto,
+                    Cantidad = vm.Cantidad,
+                    TipoConcepto = (TipoConcepto)vm.TipoConcepto,
+                    LiquidacionId = vm.LiquidacionId
+                };
+
                 _conceptoService.AddConcepto(concepto);
                 await _conceptoService.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
             }
-            return View(concepto);
+            return View(vm);
         }
 
         // GET: Conceptos/Edit/5
@@ -80,7 +90,19 @@ namespace LiquidWork.WebUI.Controllers
             {
                 return NotFound();
             }
-            return View(concepto);
+
+            var viewModel = new ConceptoViewModel
+            {
+                ConceptoId = concepto.ConceptoId,
+                CodigoConcepto = concepto.CodigoConcepto,
+                NombreConcepto = concepto.NombreConcepto,
+                Monto = concepto.Monto,
+                Cantidad = concepto.Cantidad,
+                TipoConcepto = (int)concepto.TipoConcepto,
+                LiquidacionId = (int)concepto.LiquidacionId
+            };
+
+            return View(viewModel);
         }
 
         // POST: Conceptos/Edit/5
@@ -88,9 +110,9 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NumeroLegajo,LiquidacionId,ConceptoId,CodigoConcepto,NombreConcepto,Monto,Cantidad,TipoConcepto")] Concepto concepto)
+        public async Task<IActionResult> Edit(int id, ConceptoViewModel vm)
         {
-            if (id != concepto.ConceptoId)
+            if (id != vm.ConceptoId)
             {
                 return NotFound();
             }
@@ -99,12 +121,20 @@ namespace LiquidWork.WebUI.Controllers
             {
                 try
                 {
+                    var concepto = _context.Conceptos.Find(vm.ConceptoId);
+
+                    concepto.CodigoConcepto = vm.CodigoConcepto;
+                    concepto.NombreConcepto = vm.NombreConcepto;
+                    concepto.Monto = vm.Monto;
+                    concepto.Cantidad = vm.Cantidad;
+                    concepto.TipoConcepto = (TipoConcepto)vm.TipoConcepto;
+
                     _conceptoService.UpdateConcepto(concepto);
                     await _conceptoService.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ConceptoExists(concepto.ConceptoId))
+                    if (!ConceptoExists(vm.ConceptoId))
                     {
                         return NotFound();
                     }
@@ -112,10 +142,10 @@ namespace LiquidWork.WebUI.Controllers
                     {
                         throw;
                     }
-                }
-                return RedirectToAction(nameof(Details), "Liquidaciones", new { id = concepto.LiquidacionId });
+                }                
+                return RedirectToAction(nameof(Details), "Liquidaciones", new { id = vm.LiquidacionId });
             }
-            return View(concepto);
+            return View(vm);
         }
 
         // GET: Conceptos/Delete/5

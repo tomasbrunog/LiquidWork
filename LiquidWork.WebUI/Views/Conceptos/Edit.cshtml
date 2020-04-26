@@ -1,4 +1,4 @@
-﻿@model LiquidWork.Core.Model.Concepto
+﻿@model LiquidWork.WebUI.Models.ConceptoViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -13,11 +13,6 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ConceptoId" />
-            <div class="form-group">
-                <label asp-for="NumeroLegajo" class="control-label"></label>
-                <input asp-for="NumeroLegajo" class="form-control" readonly />
-                <span asp-validation-for="NumeroLegajo" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="LiquidacionId" class="control-label"></label>
                 <input asp-for="LiquidacionId" class="form-control" readonly />

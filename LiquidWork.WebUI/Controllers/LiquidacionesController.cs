@@ -1,6 +1,7 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
 using LiquidWork.Services;
+using LiquidWork.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -57,16 +58,22 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Periodo,NumeroLegajo")] Liquidacion liquidacion)
+        public async Task<IActionResult> Create(LiquidacionViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var liquidacion = new Liquidacion
+                {
+                    NumeroLegajo = vm.NumeroLegajo,
+                    Periodo = vm.Periodo
+                };
+
                 _liquidacionService.AddLiquidacion(liquidacion);
                 await _liquidacionService.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), new { id = liquidacion.LiquidacionId});
             }
-            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo", liquidacion.NumeroLegajo);
-            return View(liquidacion);
+            ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo", vm.NumeroLegajo);
+            return View(vm);
         }
 
         // GET: Liquidaciones/Delete/5

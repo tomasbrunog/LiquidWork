@@ -1,5 +1,6 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
+using LiquidWork.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -51,15 +52,23 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
+        public async Task<IActionResult> Create(LegajoViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                var legajo = new Legajo
+                {
+                    Nombre = vm.Nombre,
+                    Apellido = vm.Apellido,
+                    Categoria = vm.Categoria,
+                    CUIL = vm.CUIL,
+                    FechaIngreso = vm.FechaIngreso
+                };
                 _context.Add(legajo);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), "Legajos", new { id = legajo.NumeroLegajo });
             }
-            return View(legajo);
+            return View(vm);
         }
 
         // GET: Legajos/Edit/5
@@ -75,7 +84,18 @@ namespace LiquidWork.WebUI.Controllers
             {
                 return NotFound();
             }
-            return View(legajo);
+
+            var viewModel = new LegajoViewModel
+            {
+                NumeroLegajo = legajo.NumeroLegajo,
+                Nombre = legajo.Nombre,
+                Apellido = legajo.Apellido,
+                Categoria = legajo.Categoria,
+                CUIL = legajo.CUIL,
+                FechaIngreso = legajo.FechaIngreso
+            };
+
+            return View(viewModel);
         }
 
         // POST: Legajos/Edit/5
@@ -83,9 +103,9 @@ namespace LiquidWork.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NumeroLegajo,Nombre,Apellido,CUIL,Categoria,FechaIngreso")] Legajo legajo)
+        public async Task<IActionResult> Edit(int id, LegajoViewModel vm)
         {
-            if (id != legajo.NumeroLegajo)
+            if (id != vm.NumeroLegajo)
             {
                 return NotFound();
             }
@@ -94,12 +114,20 @@ namespace LiquidWork.WebUI.Controllers
             {
                 try
                 {
+                    var legajo = _context.Legajos.Find(vm.NumeroLegajo);
+
+                    legajo.Nombre = vm.Nombre;
+                    legajo.Apellido = vm.Apellido;
+                    legajo.Categoria = vm.Categoria;
+                    legajo.CUIL = vm.CUIL;
+                    legajo.FechaIngreso = vm.FechaIngreso;
+
                     _context.Update(legajo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LegajoExists(legajo.NumeroLegajo))
+                    if (!LegajoExists(vm.NumeroLegajo))
                     {
                         return NotFound();
                     }
@@ -108,9 +136,9 @@ namespace LiquidWork.WebUI.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), "Legajos", new { id = vm.NumeroLegajo });
             }
-            return View(legajo);
+            return View(vm);
         }
 
         // GET: Legajos/Delete/5
