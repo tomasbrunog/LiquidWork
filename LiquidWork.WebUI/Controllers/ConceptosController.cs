@@ -99,7 +99,7 @@ namespace LiquidWork.WebUI.Controllers
                 Monto = concepto.Monto,
                 Cantidad = concepto.Cantidad,
                 TipoConcepto = (int)concepto.TipoConcepto,
-                LiquidacionId = (int)concepto.LiquidacionId
+                LiquidacionId = concepto.LiquidacionId
             };
 
             return View(viewModel);
