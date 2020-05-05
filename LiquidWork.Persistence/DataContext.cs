@@ -22,11 +22,6 @@ namespace LiquidWork.Persistence
         {
             builder.Entity<Legajo>(etb =>
             {
-                etb.HasMany(l => l.ConceptosFijos)
-                .WithOne(c => c.Legajo)
-                .HasForeignKey(c => c.NumeroLegajo)
-                .OnDelete(DeleteBehavior.Cascade);
-
                 etb.HasMany(l => l.Liquidaciones)
                 .WithOne(li => li.Legajo)
                 .HasForeignKey(li => li.NumeroLegajo)

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200505184640_InitialMigration")]
+    [Migration("20200505222714_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<int>("CodigoConcepto")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LiquidacionId")
+                    b.Property<int>("LiquidacionId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Monto")
@@ -44,9 +44,6 @@ namespace LiquidWork.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NumeroLegajo")
-                        .HasColumnType("int");
-
                     b.Property<int>("TipoConcepto")
                         .HasColumnType("int");
 
@@ -54,211 +51,7 @@ namespace LiquidWork.Persistence.Migrations
 
                     b.HasIndex("LiquidacionId");
 
-                    b.HasIndex("NumeroLegajo");
-
                     b.ToTable("Conceptos");
-
-                    b.HasData(
-                        new
-                        {
-                            ConceptoId = 30,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 35500m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 1,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 11,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 35500m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 2,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 12,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 37000m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 3,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 13,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 80500m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 4,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 14,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 43000m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 5,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 15,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 35500m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 6,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 16,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 68600m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 7,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 17,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 44000m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 8,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 18,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 33900m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 9,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 19,
-                            Cantidad = 0.0,
-                            CodigoConcepto = 101,
-                            Monto = 44600m,
-                            NombreConcepto = "Sueldo basico",
-                            NumeroLegajo = 10,
-                            TipoConcepto = 0
-                        },
-                        new
-                        {
-                            ConceptoId = 20,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 1,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 21,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 2,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 22,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 3,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 23,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 4,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 24,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 5,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 25,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 6,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 26,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 7,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 27,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 8,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 28,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 9,
-                            TipoConcepto = 2
-                        },
-                        new
-                        {
-                            ConceptoId = 29,
-                            Cantidad = 11.0,
-                            CodigoConcepto = 201,
-                            Monto = 0m,
-                            NombreConcepto = "Jubilacion",
-                            NumeroLegajo = 10,
-                            TipoConcepto = 2
-                        });
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Legajo", b =>
@@ -422,12 +215,8 @@ namespace LiquidWork.Persistence.Migrations
                     b.HasOne("LiquidWork.Core.Model.Liquidacion", "Liquidacion")
                         .WithMany("Conceptos")
                         .HasForeignKey("LiquidacionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("LiquidWork.Core.Model.Legajo", "Legajo")
-                        .WithMany("ConceptosFijos")
-                        .HasForeignKey("NumeroLegajo")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LiquidWork.Core.Model.Liquidacion", b =>

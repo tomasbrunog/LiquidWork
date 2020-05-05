@@ -59,8 +59,7 @@ namespace LiquidWork.Persistence.Migrations
                     Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
                     Cantidad = table.Column<double>(nullable: false),
                     TipoConcepto = table.Column<int>(nullable: false),
-                    LiquidacionId = table.Column<int>(nullable: true),
-                    NumeroLegajo = table.Column<int>(nullable: true)
+                    LiquidacionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,12 +69,6 @@ namespace LiquidWork.Persistence.Migrations
                         column: x => x.LiquidacionId,
                         principalTable: "Liquidaciones",
                         principalColumn: "LiquidacionId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Conceptos_Legajos_NumeroLegajo",
-                        column: x => x.NumeroLegajo,
-                        principalTable: "Legajos",
-                        principalColumn: "NumeroLegajo",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -96,42 +89,10 @@ namespace LiquidWork.Persistence.Migrations
                     { 10, "Candia", 23335555526L, "Auxiliar B", new DateTime(2011, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mariana" }
                 });
 
-            migrationBuilder.InsertData(
-                table: "Conceptos",
-                columns: new[] { "ConceptoId", "Cantidad", "CodigoConcepto", "LiquidacionId", "Monto", "NombreConcepto", "NumeroLegajo", "TipoConcepto" },
-                values: new object[,]
-                {
-                    { 30, 0.0, 101, null, 35500m, "Sueldo basico", 1, 0 },
-                    { 28, 11.0, 201, null, 0m, "Jubilacion", 9, 2 },
-                    { 18, 0.0, 101, null, 33900m, "Sueldo basico", 9, 0 },
-                    { 27, 11.0, 201, null, 0m, "Jubilacion", 8, 2 },
-                    { 17, 0.0, 101, null, 44000m, "Sueldo basico", 8, 0 },
-                    { 26, 11.0, 201, null, 0m, "Jubilacion", 7, 2 },
-                    { 16, 0.0, 101, null, 68600m, "Sueldo basico", 7, 0 },
-                    { 25, 11.0, 201, null, 0m, "Jubilacion", 6, 2 },
-                    { 15, 0.0, 101, null, 35500m, "Sueldo basico", 6, 0 },
-                    { 24, 11.0, 201, null, 0m, "Jubilacion", 5, 2 },
-                    { 14, 0.0, 101, null, 43000m, "Sueldo basico", 5, 0 },
-                    { 23, 11.0, 201, null, 0m, "Jubilacion", 4, 2 },
-                    { 13, 0.0, 101, null, 80500m, "Sueldo basico", 4, 0 },
-                    { 22, 11.0, 201, null, 0m, "Jubilacion", 3, 2 },
-                    { 12, 0.0, 101, null, 37000m, "Sueldo basico", 3, 0 },
-                    { 21, 11.0, 201, null, 0m, "Jubilacion", 2, 2 },
-                    { 11, 0.0, 101, null, 35500m, "Sueldo basico", 2, 0 },
-                    { 20, 11.0, 201, null, 0m, "Jubilacion", 1, 2 },
-                    { 19, 0.0, 101, null, 44600m, "Sueldo basico", 10, 0 },
-                    { 29, 11.0, 201, null, 0m, "Jubilacion", 10, 2 }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Conceptos_LiquidacionId",
                 table: "Conceptos",
                 column: "LiquidacionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Conceptos_NumeroLegajo",
-                table: "Conceptos",
-                column: "NumeroLegajo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Liquidaciones_NumeroLegajo",
