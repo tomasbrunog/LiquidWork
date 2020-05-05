@@ -31,10 +31,10 @@ namespace LiquidWork.Persistence.Migrations
                     LiquidacionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Periodo = table.Column<DateTime>(nullable: false),
-                    TotalRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
-                    TotalNoRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
-                    TotalDeducciones = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
-                    Neto = table.Column<decimal>(type: "decimal (18,2)", nullable: true),
+                    TotalRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
+                    TotalNoRemunerativo = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
+                    TotalDeducciones = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
+                    Neto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
                     NumeroLegajo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -57,7 +57,7 @@ namespace LiquidWork.Persistence.Migrations
                     CodigoConcepto = table.Column<int>(nullable: false),
                     NombreConcepto = table.Column<string>(nullable: false),
                     Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
-                    Cantidad = table.Column<double>(nullable: true),
+                    Cantidad = table.Column<double>(nullable: false),
                     TipoConcepto = table.Column<int>(nullable: false),
                     LiquidacionId = table.Column<int>(nullable: true),
                     NumeroLegajo = table.Column<int>(nullable: true)
@@ -101,25 +101,25 @@ namespace LiquidWork.Persistence.Migrations
                 columns: new[] { "ConceptoId", "Cantidad", "CodigoConcepto", "LiquidacionId", "Monto", "NombreConcepto", "NumeroLegajo", "TipoConcepto" },
                 values: new object[,]
                 {
-                    { 30, 1.0, 101, null, 35500m, "Sueldo basico", 1, 0 },
+                    { 30, 0.0, 101, null, 35500m, "Sueldo basico", 1, 0 },
                     { 28, 11.0, 201, null, 0m, "Jubilacion", 9, 2 },
-                    { 18, 1.0, 101, null, 33900m, "Sueldo basico", 9, 0 },
+                    { 18, 0.0, 101, null, 33900m, "Sueldo basico", 9, 0 },
                     { 27, 11.0, 201, null, 0m, "Jubilacion", 8, 2 },
-                    { 17, 1.0, 101, null, 44000m, "Sueldo basico", 8, 0 },
+                    { 17, 0.0, 101, null, 44000m, "Sueldo basico", 8, 0 },
                     { 26, 11.0, 201, null, 0m, "Jubilacion", 7, 2 },
-                    { 16, 1.0, 101, null, 68600m, "Sueldo basico", 7, 0 },
+                    { 16, 0.0, 101, null, 68600m, "Sueldo basico", 7, 0 },
                     { 25, 11.0, 201, null, 0m, "Jubilacion", 6, 2 },
-                    { 15, 1.0, 101, null, 35500m, "Sueldo basico", 6, 0 },
+                    { 15, 0.0, 101, null, 35500m, "Sueldo basico", 6, 0 },
                     { 24, 11.0, 201, null, 0m, "Jubilacion", 5, 2 },
-                    { 14, 1.0, 101, null, 43000m, "Sueldo basico", 5, 0 },
+                    { 14, 0.0, 101, null, 43000m, "Sueldo basico", 5, 0 },
                     { 23, 11.0, 201, null, 0m, "Jubilacion", 4, 2 },
-                    { 13, 1.0, 101, null, 80500m, "Sueldo basico", 4, 0 },
+                    { 13, 0.0, 101, null, 80500m, "Sueldo basico", 4, 0 },
                     { 22, 11.0, 201, null, 0m, "Jubilacion", 3, 2 },
-                    { 12, 1.0, 101, null, 37000m, "Sueldo basico", 3, 0 },
+                    { 12, 0.0, 101, null, 37000m, "Sueldo basico", 3, 0 },
                     { 21, 11.0, 201, null, 0m, "Jubilacion", 2, 2 },
-                    { 11, 1.0, 101, null, 35500m, "Sueldo basico", 2, 0 },
+                    { 11, 0.0, 101, null, 35500m, "Sueldo basico", 2, 0 },
                     { 20, 11.0, 201, null, 0m, "Jubilacion", 1, 2 },
-                    { 19, 1.0, 101, null, 44600m, "Sueldo basico", 10, 0 },
+                    { 19, 0.0, 101, null, 44600m, "Sueldo basico", 10, 0 },
                     { 29, 11.0, 201, null, 0m, "Jubilacion", 10, 2 }
                 });
 

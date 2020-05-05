@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200421212114_InitialMigration")]
+    [Migration("20200505184640_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double?>("Cantidad")
+                    b.Property<double>("Cantidad")
                         .HasColumnType("float");
 
                     b.Property<int>("CodigoConcepto")
@@ -62,7 +62,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 30,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 35500m,
                             NombreConcepto = "Sueldo basico",
@@ -72,7 +72,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 11,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 35500m,
                             NombreConcepto = "Sueldo basico",
@@ -82,7 +82,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 12,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 37000m,
                             NombreConcepto = "Sueldo basico",
@@ -92,7 +92,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 13,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 80500m,
                             NombreConcepto = "Sueldo basico",
@@ -102,7 +102,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 14,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 43000m,
                             NombreConcepto = "Sueldo basico",
@@ -112,7 +112,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 15,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 35500m,
                             NombreConcepto = "Sueldo basico",
@@ -122,7 +122,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 16,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 68600m,
                             NombreConcepto = "Sueldo basico",
@@ -132,7 +132,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 17,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 44000m,
                             NombreConcepto = "Sueldo basico",
@@ -142,7 +142,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 18,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 33900m,
                             NombreConcepto = "Sueldo basico",
@@ -152,7 +152,7 @@ namespace LiquidWork.Persistence.Migrations
                         new
                         {
                             ConceptoId = 19,
-                            Cantidad = 1.0,
+                            Cantidad = 0.0,
                             CodigoConcepto = 101,
                             Monto = 44600m,
                             NombreConcepto = "Sueldo basico",
@@ -392,7 +392,7 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal?>("Neto")
+                    b.Property<decimal>("Neto")
                         .HasColumnType("decimal (18,2)");
 
                     b.Property<int?>("NumeroLegajo")
@@ -401,13 +401,13 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<DateTime>("Periodo")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal?>("TotalDeducciones")
+                    b.Property<decimal>("TotalDeducciones")
                         .HasColumnType("decimal (18,2)");
 
-                    b.Property<decimal?>("TotalNoRemunerativo")
+                    b.Property<decimal>("TotalNoRemunerativo")
                         .HasColumnType("decimal (18,2)");
 
-                    b.Property<decimal?>("TotalRemunerativo")
+                    b.Property<decimal>("TotalRemunerativo")
                         .HasColumnType("decimal (18,2)");
 
                     b.HasKey("LiquidacionId");
