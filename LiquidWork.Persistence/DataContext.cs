@@ -45,8 +45,11 @@ namespace LiquidWork.Persistence
                 etb.Property(li => li.TotalDeducciones).HasColumnType("decimal (18,2)");
             });
 
-            builder.Entity<Concepto>().Property(c => c.Monto).HasColumnType("decimal (18,2)");
-            builder.Entity<Concepto>().Property(c => c.Porcentaje).HasColumnType("decimal (6,4)");
+            builder.Entity<Concepto>(etb =>
+            {
+                etb.Property(c => c.Factor).HasColumnType("decimal (6,4)");
+                etb.Property(c => c.Monto).HasColumnType("decimal (18,2)");
+            });
 
             //Data seeding
             builder.Seed();

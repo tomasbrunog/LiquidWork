@@ -29,6 +29,9 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<int>("CodigoConcepto")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Factor")
+                        .HasColumnType("decimal (6,4)");
+
                     b.Property<int>("LiquidacionId")
                         .HasColumnType("int");
 
@@ -38,9 +41,6 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<string>("NombreConcepto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Porcentaje")
-                        .HasColumnType("decimal (6,4)");
 
                     b.Property<int>("TipoConcepto")
                         .HasColumnType("int");

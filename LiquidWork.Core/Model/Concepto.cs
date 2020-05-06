@@ -13,7 +13,7 @@ namespace LiquidWork.Core.Model
         [DataType(DataType.Currency)]
         public decimal Monto { get; set; }
         [Range(0, 999)]
-        public decimal Porcentaje { get; set; }
+        public decimal Factor { get; set; }
         [Range(0, 99)]
         public TipoConcepto TipoConcepto { get; set; }
 
@@ -27,7 +27,7 @@ namespace LiquidWork.Core.Model
 
         public decimal CalculateMonto()
         {
-            return Liquidacion.TotalRemunerativo * Porcentaje / 100;
+            return Liquidacion.TotalRemunerativo * Factor / 100;
         }
 
     }
