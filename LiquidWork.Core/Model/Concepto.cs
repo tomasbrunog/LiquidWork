@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LiquidWork.Core.Model
 {
@@ -14,7 +13,7 @@ namespace LiquidWork.Core.Model
         [DataType(DataType.Currency)]
         public decimal Monto { get; set; }
         [Range(0, 999)]
-        public double Cantidad { get; set; }
+        public decimal Porcentaje { get; set; }
         [Range(0, 99)]
         public TipoConcepto TipoConcepto { get; set; }
 
@@ -28,7 +27,7 @@ namespace LiquidWork.Core.Model
 
         public decimal CalculateMonto()
         {
-            return Liquidacion.TotalRemunerativo * (decimal)Cantidad;
+            return Liquidacion.TotalRemunerativo * Porcentaje / 100;
         }
 
     }

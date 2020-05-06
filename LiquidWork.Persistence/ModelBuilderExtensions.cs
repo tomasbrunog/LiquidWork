@@ -22,27 +22,27 @@ namespace LiquidWork.Persistence
             );
 
             //builder.Entity<Concepto>().HasData(
-            //    new Concepto { ConceptoId = 30, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 35500, LiquidacionId = 1 },
-            //    new Concepto { ConceptoId = 11, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 35500, LiquidacionId = 2 },
-            //    new Concepto { ConceptoId = 12, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 37000, LiquidacionId = 3 },
-            //    new Concepto { ConceptoId = 13, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 80500, LiquidacionId = 4 },
-            //    new Concepto { ConceptoId = 14, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 43000, LiquidacionId = 5 },
-            //    new Concepto { ConceptoId = 15, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 35500, LiquidacionId = 6 },
-            //    new Concepto { ConceptoId = 16, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 68600, LiquidacionId = 7 },
-            //    new Concepto { ConceptoId = 17, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 44000, LiquidacionId = 8 },
-            //    new Concepto { ConceptoId = 18, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 33900, LiquidacionId = 9 },
-            //    new Concepto { ConceptoId = 19, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Cantidad = 0, Monto = 44600, LiquidacionId = 10 },
+            //    new Concepto { ConceptoId = 30, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 35500, LiquidacionId = 1 },
+            //    new Concepto { ConceptoId = 11, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 35500, LiquidacionId = 2 },
+            //    new Concepto { ConceptoId = 12, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 37000, LiquidacionId = 3 },
+            //    new Concepto { ConceptoId = 13, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 80500, LiquidacionId = 4 },
+            //    new Concepto { ConceptoId = 14, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 43000, LiquidacionId = 5 },
+            //    new Concepto { ConceptoId = 15, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 35500, LiquidacionId = 6 },
+            //    new Concepto { ConceptoId = 16, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 68600, LiquidacionId = 7 },
+            //    new Concepto { ConceptoId = 17, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 44000, LiquidacionId = 8 },
+            //    new Concepto { ConceptoId = 18, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 33900, LiquidacionId = 9 },
+            //    new Concepto { ConceptoId = 19, CodigoConcepto = 101, NombreConcepto = "Sueldo basico", TipoConcepto = TipoConcepto.Remunerativo, Porcentaje = 0, Monto = 44600, LiquidacionId = 10 },
 
-            //    new Concepto { ConceptoId = 20, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 1 },
-            //    new Concepto { ConceptoId = 21, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 2 },
-            //    new Concepto { ConceptoId = 22, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 3 },
-            //    new Concepto { ConceptoId = 23, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 4 },
-            //    new Concepto { ConceptoId = 24, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 5 },
-            //    new Concepto { ConceptoId = 25, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 6 },
-            //    new Concepto { ConceptoId = 26, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 7 },
-            //    new Concepto { ConceptoId = 27, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 8 },
-            //    new Concepto { ConceptoId = 28, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 9 },
-            //    new Concepto { ConceptoId = 29, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Cantidad = 11, Monto = 0, LiquidacionId = 10 }
+            //    new Concepto { ConceptoId = 20, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 1 },
+            //    new Concepto { ConceptoId = 21, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 2 },
+            //    new Concepto { ConceptoId = 22, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 3 },
+            //    new Concepto { ConceptoId = 23, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 4 },
+            //    new Concepto { ConceptoId = 24, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 5 },
+            //    new Concepto { ConceptoId = 25, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 6 },
+            //    new Concepto { ConceptoId = 26, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 7 },
+            //    new Concepto { ConceptoId = 27, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 8 },
+            //    new Concepto { ConceptoId = 28, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 9 },
+            //    new Concepto { ConceptoId = 29, CodigoConcepto = 201, NombreConcepto = "Jubilacion", TipoConcepto = TipoConcepto.Deduccion, Porcentaje = 11, Monto = 0, LiquidacionId = 10 }
 
             //);
 

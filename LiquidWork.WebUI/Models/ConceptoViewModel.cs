@@ -17,8 +17,8 @@ namespace LiquidWork.WebUI.Models
         public string NombreConcepto { get; set; }
         [DataType(DataType.Currency)]
         public decimal Monto { get; set; }
-        [Range(0, 999)]        
-        public double Cantidad { get; set; }
+        [Range(0, 99)]
+        public int Porcentaje { get; set; }
         [Range(0, 99)]
         public int TipoConcepto { get; set; }
         public int LiquidacionId { get; set; }

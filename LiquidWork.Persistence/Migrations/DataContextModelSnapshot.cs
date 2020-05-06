@@ -26,9 +26,6 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Cantidad")
-                        .HasColumnType("float");
-
                     b.Property<int>("CodigoConcepto")
                         .HasColumnType("int");
 
@@ -41,6 +38,9 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<string>("NombreConcepto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Porcentaje")
+                        .HasColumnType("decimal (6,4)");
 
                     b.Property<int>("TipoConcepto")
                         .HasColumnType("int");

@@ -46,6 +46,7 @@ namespace LiquidWork.Persistence
             });
 
             builder.Entity<Concepto>().Property(c => c.Monto).HasColumnType("decimal (18,2)");
+            builder.Entity<Concepto>().Property(c => c.Porcentaje).HasColumnType("decimal (6,4)");
 
             //Data seeding
             builder.Seed();

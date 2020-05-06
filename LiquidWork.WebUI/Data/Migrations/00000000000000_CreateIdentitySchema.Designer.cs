@@ -117,7 +117,7 @@ namespace LiquidWork.WebUI.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TwoFactorEnabled")
+                    b.Property<bool>("TwoPorcentajeEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")

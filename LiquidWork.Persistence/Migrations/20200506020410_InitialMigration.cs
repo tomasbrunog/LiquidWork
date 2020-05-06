@@ -57,7 +57,7 @@ namespace LiquidWork.Persistence.Migrations
                     CodigoConcepto = table.Column<int>(nullable: false),
                     NombreConcepto = table.Column<string>(nullable: false),
                     Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
-                    Cantidad = table.Column<double>(nullable: false),
+                    Porcentaje = table.Column<decimal>(type: "decimal (6,4)", nullable: false),
                     TipoConcepto = table.Column<int>(nullable: false),
                     LiquidacionId = table.Column<int>(nullable: false)
                 },
