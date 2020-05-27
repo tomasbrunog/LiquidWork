@@ -64,8 +64,9 @@ namespace LiquidWork.WebUI.Controllers
                 {
                     CodigoConcepto = vm.CodigoConcepto,
                     NombreConcepto = vm.NombreConcepto,
-                    Monto = vm.Monto,
-                    Factor = vm.Porcentaje / 100,
+                    BaseMonto = vm.Monto,
+                    Factor = vm.Porcentaje / 100M,
+                    Posicion = vm.Posicion ?? 0,
                     TipoConcepto = (TipoConcepto)vm.TipoConcepto,
                     LiquidacionId = vm.LiquidacionId
                 };
@@ -96,8 +97,9 @@ namespace LiquidWork.WebUI.Controllers
                 ConceptoId = concepto.ConceptoId,
                 CodigoConcepto = concepto.CodigoConcepto,
                 NombreConcepto = concepto.NombreConcepto,
-                Monto = concepto.Monto,
-                Porcentaje = (int)concepto.Factor,
+                Monto = concepto.BaseMonto,
+                Porcentaje = (int)(concepto.Factor * 100),
+                Posicion = concepto.Posicion,
                 TipoConcepto = (int)concepto.TipoConcepto,
                 LiquidacionId = concepto.LiquidacionId
             };
@@ -125,8 +127,9 @@ namespace LiquidWork.WebUI.Controllers
 
                     concepto.CodigoConcepto = vm.CodigoConcepto;
                     concepto.NombreConcepto = vm.NombreConcepto;
-                    concepto.Monto = vm.Monto;
-                    concepto.Factor = vm.Porcentaje / 100;
+                    concepto.BaseMonto = vm.Monto;
+                    concepto.Factor = vm.Porcentaje / 100M;
+                    concepto.Posicion = vm.Posicion ?? 0;
                     concepto.TipoConcepto = (TipoConcepto)vm.TipoConcepto;
 
                     _conceptoService.UpdateConcepto(concepto);

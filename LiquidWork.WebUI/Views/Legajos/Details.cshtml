@@ -67,20 +67,17 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Liquidaciones != null)
+        @foreach (var item in Model.Liquidaciones)
         {
-            foreach (var item in Model.Liquidaciones)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Periodo)
-                    </td>
-                    <td>
-                        <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Details</a> |
-                        <a asp-controller="Liquidaciones" asp-action="Delete" asp-route-id="@item.LiquidacionId">Delete</a>
-                    </td>
-                </tr>
-            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Periodo)
+                </td>
+                <td>
+                    <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Details</a> |
+                    <a asp-controller="Liquidaciones" asp-action="Delete" asp-route-id="@item.LiquidacionId">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

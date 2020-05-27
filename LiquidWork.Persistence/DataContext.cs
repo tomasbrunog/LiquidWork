@@ -48,6 +48,7 @@ namespace LiquidWork.Persistence
             builder.Entity<Concepto>(etb =>
             {
                 etb.Property(c => c.Factor).HasColumnType("decimal (6,4)");
+                etb.Property(c => c.BaseMonto).HasColumnType("decimal (18,2)");
                 etb.Property(c => c.Monto).HasColumnType("decimal (18,2)");
             });
 

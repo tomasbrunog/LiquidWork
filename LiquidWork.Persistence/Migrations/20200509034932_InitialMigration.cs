@@ -56,8 +56,10 @@ namespace LiquidWork.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CodigoConcepto = table.Column<int>(nullable: false),
                     NombreConcepto = table.Column<string>(nullable: false),
+                    BaseMonto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
                     Monto = table.Column<decimal>(type: "decimal (18,2)", nullable: false),
                     Factor = table.Column<decimal>(type: "decimal (6,4)", nullable: false),
+                    Posicion = table.Column<int>(nullable: false),
                     TipoConcepto = table.Column<int>(nullable: false),
                     LiquidacionId = table.Column<int>(nullable: false)
                 },

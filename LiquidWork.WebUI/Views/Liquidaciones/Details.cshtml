@@ -89,33 +89,30 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Conceptos != null)
+        @foreach (var item in Model.Conceptos.OrderBy(c=>c.Posicion))
         {
-            foreach (var item in Model.Conceptos.OrderBy(c=>c.TipoConcepto))
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CodigoConcepto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NombreConcepto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Factor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Monto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TipoConcepto)
-                    </td>
-                    <td>
-                        <a asp-controller="Conceptos" asp-action="Details" asp-route-id="@item.ConceptoId">Details</a> |
-                        <a asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
-                        <a asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
-                    </td>
-                </tr>
-            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoConcepto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreConcepto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Factor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoConcepto)
+                </td>
+                <td>
+                    <a asp-controller="Conceptos" asp-action="Details" asp-route-id="@item.ConceptoId">Details</a> |
+                    <a asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
+                    <a asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

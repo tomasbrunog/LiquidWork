@@ -20,6 +20,7 @@ namespace LiquidWork.WebUI.Models
         [Range(0, 99)]
         public int Porcentaje { get; set; }
         [Range(0, 99)]
+        public int? Posicion { get; set; }
         public int TipoConcepto { get; set; }
         public int LiquidacionId { get; set; }
     }

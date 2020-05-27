@@ -25,5 +25,9 @@ namespace LiquidWork.Core.Model
 
         public virtual ICollection<Liquidacion> Liquidaciones { get; set; }
 
+        public Legajo()
+        {
+            Liquidaciones = new List<Liquidacion>();
+        }
     }
 }

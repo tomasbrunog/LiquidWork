@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiquidWork.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200506182424_InitialMigration")]
+    [Migration("20200509034932_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,9 @@ namespace LiquidWork.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal>("BaseMonto")
+                        .HasColumnType("decimal (18,2)");
+
                     b.Property<int>("CodigoConcepto")
                         .HasColumnType("int");
 
@@ -43,6 +46,9 @@ namespace LiquidWork.Persistence.Migrations
                     b.Property<string>("NombreConcepto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Posicion")
+                        .HasColumnType("int");
 
                     b.Property<int>("TipoConcepto")
                         .HasColumnType("int");

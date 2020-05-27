@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata.Ecma335;
 
 namespace LiquidWork.Core.Model
 {
@@ -11,23 +12,25 @@ namespace LiquidWork.Core.Model
         [Required]
         public string NombreConcepto { get; set; }
         [DataType(DataType.Currency)]
+        public decimal BaseMonto { get; set; }
         public decimal Monto { get; set; }
         [Range(0, 999)]
         public decimal Factor { get; set; }
+        public int Posicion { get; set; }
         [Range(0, 99)]
         public TipoConcepto TipoConcepto { get; set; }
 
         public int LiquidacionId { get; set; }
         public virtual Liquidacion Liquidacion { get; set; }
 
-        public void UpdateMonto()
+        public void UpdateMonto(decimal subTotalRemunerativo)
         {
-            Monto += CalculateMonto();
+            Monto = CalculateMonto(subTotalRemunerativo);
         }
 
-        public decimal CalculateMonto()
+        public decimal CalculateMonto(decimal subTotalRemunerativo)
         {
-            return Liquidacion.TotalRemunerativo * Factor / 100;
+            return BaseMonto + subTotalRemunerativo * Factor;
         }
 
     }

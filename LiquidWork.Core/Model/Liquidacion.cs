@@ -14,17 +14,21 @@ namespace LiquidWork.Core.Model
         [DisplayFormat(DataFormatString = "{0:MMMM yyyy}")]
         public DateTime Periodo { get; set; }
         [DataType(DataType.Currency)]
-        public decimal TotalRemunerativo { get; set; } = 0;
+        public decimal TotalRemunerativo { get; set; }
         [DataType(DataType.Currency)]
-        public decimal TotalNoRemunerativo { get; set; } = 0;
+        public decimal TotalNoRemunerativo { get; set; }
         [DataType(DataType.Currency)]
-        public decimal TotalDeducciones { get; set; } = 0;
+        public decimal TotalDeducciones { get; set; }
         [DataType(DataType.Currency)]
-        public decimal Neto { get; set; } = 0;
+        public decimal Neto { get; set; }
 
         public int? NumeroLegajo { get; set; }
         public virtual Legajo Legajo { get; set; }
         public virtual ICollection<Concepto> Conceptos { get; set; }
 
+        public Liquidacion()
+        {
+            Conceptos = new List<Concepto>();
+        }
     }
 }
