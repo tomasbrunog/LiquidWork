@@ -2,6 +2,7 @@
 using LiquidWork.Persistence;
 using LiquidWork.Services;
 using LiquidWork.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace LiquidWork.WebUI.Controllers
 {
+    [Authorize]
     public class LiquidacionesController : Controller
     {
         private readonly DataContext _context;
