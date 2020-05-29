@@ -1,10 +1,10 @@
 ﻿@model LiquidWork.Core.Model.Legajo
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
 
-<h1>Details</h1>
+    <h1>Detalles</h1>
 
 <div>
     <h4>Legajo</h4>
@@ -49,8 +49,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.NumeroLegajo">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.NumeroLegajo">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
 </div>
 
 <h4>Liquidaciones</h4>
@@ -74,8 +74,8 @@
                     @Html.DisplayFor(modelItem => item.Periodo)
                 </td>
                 <td>
-                    <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Details</a> |
-                    <a asp-controller="Liquidaciones" asp-action="Delete" asp-route-id="@item.LiquidacionId">Delete</a>
+                    <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Detalles</a> |
+                    <a asp-controller="Liquidaciones" asp-action="Delete" asp-route-id="@item.LiquidacionId">Eliminar</a>
                 </td>
             </tr>
         }
