@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LiquidWork.Core.Model;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LiquidWork.WebUI.Models
@@ -19,5 +22,26 @@ namespace LiquidWork.WebUI.Models
         public decimal? Neto { get; set; }
 
         public int? NumeroLegajo { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string NombreCompleto { get => $"{Nombre} {Apellido}"; }
+
+        public ICollection<ConceptoLiquidacion> Conceptos { get; set; }
+
+        public LiquidacionViewModel()
+        {
+            Conceptos = new List<ConceptoLiquidacion>();
+        }
+    }
+
+    public class ConceptoLiquidacion
+    {
+        public int ConceptoId { get; set; }
+        public int CodigoConcepto { get; set; }
+        public string NombreConcepto { get; set; }
+        public decimal Monto { get; set; }
+        public decimal Factor { get; set; }
+        public TipoConcepto TipoConcepto { get; set; }
+        public int Posicion { get; set; }
     }
 }

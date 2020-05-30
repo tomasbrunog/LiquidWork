@@ -45,7 +45,36 @@ namespace LiquidWork.WebUI.Controllers
                 return NotFound();
             }
 
-            return View(liquidacion);
+            var vm = new LiquidacionViewModel
+            {
+                LiquidacionId = liquidacion.LiquidacionId,
+                Periodo = liquidacion.Periodo,
+                TotalRemunerativo = liquidacion.TotalRemunerativo,
+                TotalNoRemunerativo = liquidacion.TotalNoRemunerativo,
+                TotalDeducciones = liquidacion.TotalDeducciones,
+                Neto = liquidacion.Neto,
+                NumeroLegajo = liquidacion.NumeroLegajo,
+                Nombre = liquidacion.Legajo.Nombre,
+                Apellido = liquidacion.Legajo.Apellido
+            };
+
+            foreach (var concepto in liquidacion.Conceptos)
+            {
+                var conceptoLiquidacion = new ConceptoLiquidacion
+                {
+                    ConceptoId = concepto.ConceptoId,
+                    CodigoConcepto = concepto.CodigoConcepto,
+                    NombreConcepto = concepto.NombreConcepto,
+                    Monto = concepto.Monto,
+                    Factor = concepto.Factor,
+                    TipoConcepto = concepto.TipoConcepto,
+                    Posicion = concepto.Posicion
+                };
+
+                vm.Conceptos.Add(conceptoLiquidacion);
+            }
+
+            return View(vm);
         }
 
         // GET: Liquidaciones/Create
@@ -72,7 +101,7 @@ namespace LiquidWork.WebUI.Controllers
 
                 _liquidacionService.AddLiquidacion(liquidacion);
                 await _liquidacionService.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), new { id = liquidacion.LiquidacionId});
+                return RedirectToAction(nameof(Details), new { id = liquidacion.LiquidacionId });
             }
             ViewData["NumeroLegajo"] = new SelectList(_context.Legajos, "NumeroLegajo", "NumeroLegajo", vm.NumeroLegajo);
             return View(vm);

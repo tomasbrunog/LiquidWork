@@ -1,4 +1,4 @@
-﻿@model LiquidWork.Core.Model.Liquidacion
+﻿@model LiquidWork.WebUI.Models.LiquidacionViewModel
 
 @{
     ViewData["Title"] = "Detalles";
@@ -50,13 +50,13 @@
             Empleado
         </dt>
         <dd class="col-sm-10">
-            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.Legajo.Nombre) @Html.DisplayFor(model => model.Legajo.Apellido)</a>
+            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.NombreCompleto)</a>
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Legajo)
+            @Html.DisplayNameFor(model => model.NumeroLegajo)
         </dt>
         <dd class="col-sm-10">
-            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.Legajo.NumeroLegajo)</a>
+            <a asp-controller="Legajos" asp-action="Details" asp-route-id="@Model.NumeroLegajo">@Html.DisplayFor(model => model.NumeroLegajo)</a>
         </dd>
     </dl>
 </div>
