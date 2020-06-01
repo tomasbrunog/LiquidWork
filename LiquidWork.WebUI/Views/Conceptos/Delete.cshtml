@@ -4,9 +4,9 @@
     ViewData["Title"] = "Eliminar";
 }
 
-<h1>Eliminar</h1>
+<h1>Eliminar?</h1>
 
-<h3>Eliminar?</h3>
+<br />
 <div>
     <h4>Concepto</h4>
     <hr />
@@ -37,8 +37,8 @@
         </dd>
     </dl>
     
-    <form asp-action="Eliminar">
+    <form asp-action="Delete">
         <input type="hidden" asp-for="ConceptoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
     </form>
 </div>

@@ -20,7 +20,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Monto)
             </th>
-            <thFactor
+            <th>
                 @Html.DisplayNameFor(model => model.Factor)
             </th>
             <th>
@@ -48,9 +48,9 @@
                 @Html.DisplayFor(modelItem => item.TipoConcepto)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ConceptoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ConceptoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ConceptoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ConceptoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ConceptoId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConceptoId">Eliminar</a>
             </td>
         </tr>
 }
