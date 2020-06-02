@@ -66,7 +66,7 @@ namespace LiquidWork.Services
             int incomingPosition = incomingItem.Posicion;
             if (incomingPosition == 0)
             {
-                incomingItem.Posicion = sortedList.Count();
+                incomingPosition = sortedList.Count();
             }
 
             sortedList.Move(sortedList.IndexOf(incomingItem), incomingPosition - 1);
