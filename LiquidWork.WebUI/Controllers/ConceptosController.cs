@@ -5,6 +5,7 @@ using LiquidWork.WebUI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,7 +26,26 @@ namespace LiquidWork.WebUI.Controllers
         // GET: Conceptos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Conceptos.ToListAsync());
+            var conceptoCollection = await _context.Conceptos.ToListAsync();
+            var conceptoViewModelCollection = new List<ConceptoViewModel>();
+
+            foreach (var concepto in conceptoCollection)
+            {
+                var viewModel = new ConceptoViewModel
+                {
+                    ConceptoId = concepto.ConceptoId,
+                    CodigoConcepto = concepto.CodigoConcepto,
+                    NombreConcepto = concepto.NombreConcepto,
+                    Monto = concepto.BaseMonto,
+                    Porcentaje = (int)(concepto.Factor * 100),
+                    Posicion = concepto.Posicion,
+                    TipoConcepto = concepto.TipoConcepto,
+                    LiquidacionId = concepto.LiquidacionId
+                };
+
+                conceptoViewModelCollection.Add(viewModel);
+            }
+            return View(conceptoViewModelCollection);
         }
 
         // GET: Conceptos/Details/5
@@ -43,7 +63,25 @@ namespace LiquidWork.WebUI.Controllers
                 return NotFound();
             }
 
-            return View(concepto);
+            var viewModel = new ConceptoViewModel
+            {
+                ConceptoId = concepto.ConceptoId,
+                CodigoConcepto = concepto.CodigoConcepto,
+                NombreConcepto = concepto.NombreConcepto,
+                Monto = concepto.BaseMonto,
+                Porcentaje = (int)(concepto.Factor * 100),
+                Posicion = concepto.Posicion,
+                TipoConcepto = concepto.TipoConcepto,
+                LiquidacionId = concepto.LiquidacionId,
+                Legajo = new LegajoConcepto
+                {
+                    NumeroLegajo = concepto.Liquidacion.Legajo.NumeroLegajo,
+                    Nombre = concepto.Liquidacion.Legajo.Nombre,
+                    Apellido = concepto.Liquidacion.Legajo.Apellido
+                }
+            };
+
+            return View(viewModel);
         }
 
         // GET: Conceptos/Create
@@ -69,7 +107,7 @@ namespace LiquidWork.WebUI.Controllers
                     BaseMonto = vm.Monto,
                     Factor = vm.Porcentaje / 100M,
                     Posicion = vm.Posicion ?? 0,
-                    TipoConcepto = (TipoConcepto)vm.TipoConcepto,
+                    TipoConcepto = vm.TipoConcepto,
                     LiquidacionId = vm.LiquidacionId
                 };
 
@@ -102,7 +140,7 @@ namespace LiquidWork.WebUI.Controllers
                 Monto = concepto.BaseMonto,
                 Porcentaje = (int)(concepto.Factor * 100),
                 Posicion = concepto.Posicion,
-                TipoConcepto = (int)concepto.TipoConcepto,
+                TipoConcepto = concepto.TipoConcepto,
                 LiquidacionId = concepto.LiquidacionId
             };
 
@@ -132,7 +170,7 @@ namespace LiquidWork.WebUI.Controllers
                     concepto.BaseMonto = vm.Monto;
                     concepto.Factor = vm.Porcentaje / 100M;
                     concepto.Posicion = vm.Posicion ?? 0;
-                    concepto.TipoConcepto = (TipoConcepto)vm.TipoConcepto;
+                    concepto.TipoConcepto = vm.TipoConcepto;
 
                     _conceptoService.UpdateConcepto(concepto);
                     await _conceptoService.SaveChangesAsync();
@@ -147,7 +185,7 @@ namespace LiquidWork.WebUI.Controllers
                     {
                         throw;
                     }
-                }                
+                }
                 return RedirectToAction(nameof(Details), "Liquidaciones", new { id = vm.LiquidacionId });
             }
             return View(vm);

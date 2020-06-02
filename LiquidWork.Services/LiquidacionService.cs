@@ -1,7 +1,5 @@
 ﻿using LiquidWork.Core.Model;
 using LiquidWork.Persistence;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,6 +14,10 @@ namespace LiquidWork.Services
         {
             _context = context;
         }
+        public void AddLiquidacion(Liquidacion liquidacion)
+        {
+            _context.Add(liquidacion);
+        }
 
         public void AddConcepto(Concepto concepto)
         {
@@ -24,41 +26,51 @@ namespace LiquidWork.Services
             UpdateTotales(concepto.LiquidacionId);
         }
 
-        public void AddLiquidacion(Liquidacion liquidacion)
-        {
-            _context.Add(liquidacion);
-        }
 
         public void RemoveConcepto(Concepto concepto)
         {
             var liquidacion = concepto.Liquidacion;
             liquidacion.Conceptos.Remove(concepto);
 
-            UpdateTotales(liquidacion);
+            var updatedSubTotals = CalculateSubTotals(liquidacion.Conceptos.OrderBy(c => c.Posicion));
+            UpdateTotales(liquidacion, updatedSubTotals);
         }
 
-        public void UpdateTotales(Liquidacion liquidacion)
+        public List<decimal> CalculateSubTotals(IEnumerable<Concepto> conceptoCollection)
         {
-            var sortedConceptosList = SortConceptos(liquidacion.Conceptos);
-
             var subTotals = new List<decimal> { 0, 0, 0 };
 
-            foreach (var item in sortedConceptosList)
+            foreach (var item in conceptoCollection)
             {
                 item.UpdateMonto(subTotals[0]);
                 subTotals[(int)item.TipoConcepto] += item.Monto;
             }
 
-            liquidacion.TotalRemunerativo = subTotals[0];
-            liquidacion.TotalNoRemunerativo = subTotals[1];
-            liquidacion.TotalDeducciones = subTotals[2];
+            return subTotals;
+        }
+        public void UpdateTotales(int? liquidacionId)
+        {
+            var liquidacion = _context.Liquidaciones
+                .FirstOrDefault(li => li.LiquidacionId == liquidacionId);
+
+            var updatedConceptoCollection = InsertOrMoveConcepto(liquidacion.Conceptos);
+            var updatedSubTotals = CalculateSubTotals(updatedConceptoCollection);
+
+            UpdateTotales(liquidacion, updatedSubTotals);
+        }
+
+        public void UpdateTotales(Liquidacion liquidacion, List<decimal> updatedSubTotals)
+        {
+            liquidacion.TotalRemunerativo = updatedSubTotals[0];
+            liquidacion.TotalNoRemunerativo = updatedSubTotals[1];
+            liquidacion.TotalDeducciones = updatedSubTotals[2];
 
             liquidacion.Neto = liquidacion.TotalRemunerativo
                 + liquidacion.TotalNoRemunerativo
                 - liquidacion.TotalDeducciones;
         }
 
-        private ICollection<Concepto> SortConceptos(ICollection<Concepto> conceptos)
+        private List<Concepto> InsertOrMoveConcepto(ICollection<Concepto> conceptos)
         {
             var incomingItem = conceptos.First();
             var sortedList = new ObservableCollection<Concepto>(conceptos.OrderBy(c => c.Posicion));
@@ -76,16 +88,9 @@ namespace LiquidWork.Services
                 sortedList[i].Posicion = i + 1;
             }
 
-            return sortedList;
+            return new List<Concepto>(sortedList);
         }
 
-        public void UpdateTotales(int? liquidacionId)
-        {
-            var liquidacion = _context.Liquidaciones
-                .FirstOrDefault(li => li.LiquidacionId == liquidacionId);
-
-            UpdateTotales(liquidacion);
-        }
 
         public Task<int> SaveChangesAsync() => _context.SaveChangesAsync();
     }
