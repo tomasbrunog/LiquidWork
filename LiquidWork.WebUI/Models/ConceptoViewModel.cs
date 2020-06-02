@@ -21,7 +21,17 @@ namespace LiquidWork.WebUI.Models
         public int Porcentaje { get; set; }
         [Range(0, 99)]
         public int? Posicion { get; set; }
-        public int TipoConcepto { get; set; }
+        public TipoConcepto TipoConcepto { get; set; }
         public int LiquidacionId { get; set; }
+        public LegajoConcepto Legajo { get; set; }
+    }
+
+    public class LegajoConcepto
+    {
+        public int NumeroLegajo { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string NombreCompleto { get => $"{Nombre} {Apellido}"; }
+
     }
 }

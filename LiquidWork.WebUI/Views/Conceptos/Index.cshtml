@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LiquidWork.Core.Model.Concepto>
+﻿@model IEnumerable<LiquidWork.WebUI.Models.ConceptoViewModel>
 
 @{
     ViewData["Title"] = "Conceptos";
@@ -21,7 +21,7 @@
                 @Html.DisplayNameFor(model => model.Monto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Factor)
+                @Html.DisplayNameFor(model => model.Porcentaje)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoConcepto)
@@ -42,7 +42,7 @@
                 @Html.DisplayFor(modelItem => item.Monto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Factor)
+                @Html.DisplayFor(modelItem => item.Porcentaje)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TipoConcepto)
