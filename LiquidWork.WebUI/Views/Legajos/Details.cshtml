@@ -49,7 +49,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.NumeroLegajo">Editar</a> |
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.NumeroLegajo">Editar</a> 
     <a asp-action="Index">Volver a la lista</a>
 </div>
 
@@ -74,8 +74,8 @@
                     @Html.DisplayFor(modelItem => item.Periodo)
                 </td>
                 <td>
-                    <a asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Detalles</a> |
-                    <a asp-controller="Liquidaciones" asp-action="Delete" asp-route-id="@item.LiquidacionId">Eliminar</a>
+                    <a class="btn btn-primary" asp-controller="Liquidaciones" asp-action="Details" asp-route-id="@item.LiquidacionId">Detalles</a> 
+                    <a class="btn btn-danger" asp-controller="Liquidaciones" asp-action="Delete" asp-route-id="@item.LiquidacionId">Eliminar</a>
                 </td>
             </tr>
         }

@@ -55,8 +55,8 @@
                 @Html.DisplayFor(modelItem => item.Legajo.Apellido)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.LiquidacionId">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.LiquidacionId">Eliminar</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.LiquidacionId">Detalles</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.LiquidacionId">Eliminar</a>
             </td>
         </tr>
 }

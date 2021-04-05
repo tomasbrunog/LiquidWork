@@ -48,9 +48,9 @@
                 @Html.DisplayFor(modelItem => item.TipoConcepto)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ConceptoId">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.ConceptoId">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.ConceptoId">Eliminar</a>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ConceptoId">Editar</a> 
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ConceptoId">Detalles</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ConceptoId">Eliminar</a>
             </td>
         </tr>
 }

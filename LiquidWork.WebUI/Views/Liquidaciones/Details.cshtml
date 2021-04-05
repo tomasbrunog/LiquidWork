@@ -60,8 +60,7 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.LiquidacionId">Editar</a> |
+<div>    
     <a asp-action="Index">Back to List</a>
 </div>
 
@@ -108,9 +107,9 @@
                     @Html.DisplayFor(modelItem => item.TipoConcepto)
                 </td>
                 <td>
-                    <a asp-controller="Conceptos" asp-action="Details" asp-route-id="@item.ConceptoId">Detalles</a> |
-                    <a asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Editar</a> |
-                    <a asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Eliminar</a>
+                    <a class="btn btn-primary" asp-controller="Conceptos" asp-action="Details" asp-route-id="@item.ConceptoId">Detalles</a> 
+                    <a class="btn btn-primary" asp-controller="Conceptos" asp-action="Edit" asp-route-id="@item.ConceptoId">Editar</a> 
+                    <a class="btn btn-danger" asp-controller="Conceptos" asp-action="Delete" asp-route-id="@item.ConceptoId">Eliminar</a>
                 </td>
             </tr>
         }
